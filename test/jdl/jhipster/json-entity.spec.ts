@@ -90,6 +90,7 @@ JSONEntity {
           clientRootFolder: 'oh',
           skipServer: true,
           skipClient: true,
+          persisted: "no",
           applications: [],
         });
       });

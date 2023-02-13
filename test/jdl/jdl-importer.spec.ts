@@ -428,7 +428,7 @@ relationship OneToOne {
         expect(returned.exportedEntities[0].myCustomBinaryOption).to.equal('customValue');
         expect(returned.exportedEntities[1].pagination).to.equal('pagination');
         expect(returned.exportedEntities[1].dto).to.equal('mapstruct');
-        expect(returned.exportedEntities[1].service).to.equal('serviceClass');
+        expect(returned.exportedEntities[1].service).to.equal('serviceImpl');
         expect(returned.exportedEntities[2].skipClient).to.be.true;
         expect(returned.exportedEntities[2].jpaMetamodelFiltering).to.be.true;
         expect(returned.exportedEntities[2].pagination).to.equal('pagination');

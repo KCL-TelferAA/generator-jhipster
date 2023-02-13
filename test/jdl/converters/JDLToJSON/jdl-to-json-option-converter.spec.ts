@@ -115,6 +115,11 @@ describe('jdl - JDLToJSONOptionConverter', () => {
               entityNames: ['A'],
             }),
             new JDLBinaryOption({
+              name: binaryOptions.Options.PERSISTED,
+              value: binaryOptions.Values.persisted.PERSIST,
+              entityNames: ['A'],
+            }),
+            new JDLBinaryOption({
               name: binaryOptions.Options.SEARCH,
               value: binaryOptions.Values.search.COUCHBASE,
               entityNames: ['A'],
@@ -142,6 +147,7 @@ describe('jdl - JDLToJSONOptionConverter', () => {
   "jpaMetamodelFiltering": true,
   "microserviceName": "myMs",
   "pagination": "pagination",
+  "persisted": "yes",
   "readOnly": true,
   "searchEngine": "couchbase",
   "service": "serviceImpl",

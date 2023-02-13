@@ -35,6 +35,10 @@ describe('jdl - BinaryOptions', () => {
     "NO": "no",
     "PAGINATION": "pagination",
   },
+  "persisted": {
+    "DO_NOT_PERSIST": "no",
+    "PERSIST": "yes",
+  },
   "search": {
     "COUCHBASE": "couchbase",
     "ELASTICSEARCH": "elasticsearch",
@@ -82,6 +86,7 @@ describe('jdl - BinaryOptions', () => {
   "dto",
   "service",
   "pagination",
+  "persisted",
   "microservice",
   "search",
   "angularSuffix",
