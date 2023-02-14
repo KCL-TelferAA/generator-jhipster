@@ -1,5 +1,6 @@
 {
   "changelogDate": "20150805125055",
+  "clientInterface": "restful-resources",
   "clientRootFolder": "test-root",
   "dto": "no",
   "fields": [

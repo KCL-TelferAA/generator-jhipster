@@ -1,5 +1,6 @@
 {
   "changelogDate": "20190117074746",
+  "clientInterface": "restful-resources",
   "clientRootFolder": "",
   "databaseType": "sql",
   "dto": "no",

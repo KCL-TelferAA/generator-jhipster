@@ -18,7 +18,11 @@
  */
 import { createTranslationReplacer } from './support/index.mjs';
 import { clientApplicationBlock } from '../client/utils.mjs';
+import { entityOptions } from '../../jdl/jhipster/index.mjs';
 import AngularGenerator, { type GeneratorDefinition } from './generator.mjs';
+
+const { ClientInterfaceTypes } = entityOptions;
+const { NO: NO_CLIENT_INTERFACE } = ClientInterfaceTypes;
 
 export const angularFiles = {
   client: [
@@ -66,7 +70,7 @@ export async function writeEntitiesFiles(
 ) {
   await control.loadClientTranslations?.();
 
-  for (const entity of entities.filter(entity => !entity.skipClient && !entity.builtIn)) {
+  for (const entity of entities.filter(entity => !entity.skipClient && !entity.builtIn && entity.clientInterface !== NO_CLIENT_INTERFACE)) {
     await this.writeFiles({
       sections: angularFiles,
       transform: !application.enableTranslation ? [createTranslationReplacer(control.getWebappTranslation)] : undefined,
@@ -77,7 +81,9 @@ export async function writeEntitiesFiles(
 
 export async function postWriteEntitiesFiles(this: AngularGenerator, taskParam: GeneratorDefinition['postWritingEntitiesTaskParam']) {
   const { source, application } = taskParam;
-  const entities = taskParam.entities.filter(entity => !entity.skipClient && !entity.builtIn && !entity.embedded);
+  const entities = taskParam.entities.filter(
+    entity => !entity.skipClient && !entity.builtIn && !entity.embedded && entity.clientInterface !== NO_CLIENT_INTERFACE
+  );
   source.addEntitiesToClient({ application, entities });
 }
 

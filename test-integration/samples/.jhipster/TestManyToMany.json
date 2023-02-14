@@ -1,6 +1,7 @@
 {
   "angularJSSuffix": "mySuffix",
   "changelogDate": "20160208210535",
+  "clientInterface": "restful-resources",
   "dto": "no",
   "fields": [],
   "fluentMethods": true,
