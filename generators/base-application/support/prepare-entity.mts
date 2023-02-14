@@ -120,6 +120,7 @@ export const entityDefaultConfig = {
   anyPropertyHasValidation: false,
   dto: binaryOptions.DefaultValues[binaryOptions.Options.DTO],
   service: binaryOptions.DefaultValues[binaryOptions.Options.SERVICE],
+  clientInterface: binaryOptions.DefaultValues[binaryOptions.Options.CLIENT_INTERFACE],
   jpaMetamodelFiltering: false,
   readOnly: false,
   embedded: false,

@@ -179,6 +179,7 @@ JSONEntity {
   "applications": [
     "toto",
   ],
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -292,6 +293,7 @@ JSONEntity {
   "applications": [
     "toto",
   ],
+  "clientInterface": "restful-resources",
   "clientRootFolder": "../client_root_folder",
   "dto": "mapstruct",
   "embedded": true,
@@ -359,6 +361,7 @@ JSONEntity {
   "applications": [
     "toto",
   ],
+  "clientInterface": "restful-resources",
   "dto": "mapstruct",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -489,6 +492,7 @@ JSONEntity {
   "applications": [
     "toto",
   ],
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -542,6 +546,7 @@ JSONEntity {
   "applications": [
     "toto",
   ],
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -599,6 +604,7 @@ JSONEntity {
   "applications": [
     "toto",
   ],
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -673,6 +679,7 @@ JSONEntity {
   "applications": [
     "toto",
   ],
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -745,6 +752,7 @@ JSONEntity {
   "applications": [
     "toto",
   ],
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "a",
@@ -802,6 +810,7 @@ JSONEntity {
   "applications": [
     "toto",
   ],
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -914,6 +923,7 @@ JSONEntity {
   "applications": [
     "toto",
   ],
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -1004,6 +1014,7 @@ JSONEntity {
   "applications": [
     "toto",
   ],
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -1880,6 +1891,7 @@ JSONEntity {
     "applications": [
       "tata",
     ],
+    "clientInterface": "restful-resources",
     "dto": "no",
     "embedded": false,
     "entityTableName": "entity_a",
@@ -1897,6 +1909,7 @@ JSONEntity {
     "applications": [
       "tata",
     ],
+    "clientInterface": "restful-resources",
     "dto": "no",
     "embedded": false,
     "entityTableName": "entity_b",
@@ -1915,6 +1928,7 @@ JSONEntity {
       "tata",
       "tutu",
     ],
+    "clientInterface": "restful-resources",
     "dto": "no",
     "embedded": false,
     "entityTableName": "entity_c",
@@ -1937,6 +1951,7 @@ JSONEntity {
       "tata",
       "tutu",
     ],
+    "clientInterface": "restful-resources",
     "dto": "no",
     "embedded": false,
     "entityTableName": "entity_c",
@@ -1954,6 +1969,7 @@ JSONEntity {
     "applications": [
       "tutu",
     ],
+    "clientInterface": "restful-resources",
     "dto": "mapstruct",
     "embedded": false,
     "entityTableName": "entity_d",
@@ -1971,6 +1987,7 @@ JSONEntity {
     "applications": [
       "tutu",
     ],
+    "clientInterface": "restful-resources",
     "dto": "no",
     "embedded": false,
     "entityTableName": "entity_e",

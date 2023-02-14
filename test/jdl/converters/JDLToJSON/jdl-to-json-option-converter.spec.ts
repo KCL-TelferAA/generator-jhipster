@@ -129,6 +129,11 @@ describe('jdl - JDLToJSONOptionConverter', () => {
               value: binaryOptions.Values.service.SERVICE_IMPL,
               entityNames: ['A'],
             }),
+            new JDLBinaryOption({
+              name: binaryOptions.Options.CLIENT_INTERFACE,
+              value: binaryOptions.Values.clientInterface.NO,
+              entityNames: ['A'],
+            }),
           ];
           jdlObject.addEntity(entityA);
           options.forEach(option => jdlObject.addOption(option));
@@ -140,6 +145,7 @@ describe('jdl - JDLToJSONOptionConverter', () => {
           jestExpect(convertedOptions).toMatchInlineSnapshot(`
 {
   "angularJSSuffix": "suffix",
+  "clientInterface": "no",
   "clientRootFolder": "../client_root_folder",
   "dto": "mapstruct",
   "embedded": true,

@@ -361,6 +361,28 @@ describe('jdl - ParsedJDLToJDLObjectConverter', () => {
           ]);
         });
       });
+      context('when using the clientInterface option', () => {
+        let input;
+        let jdlObject;
+
+        before(() => {
+          input = JDLReader.parseFromFiles([path.join(__dirname, '..', '..', 'test-files', 'client_interface.jdl')]);
+          jdlObject = ParsedJDLToJDLObjectConverter.parseFromConfigurationObject({
+            parsedContent: input,
+          });
+        });
+
+        it('should add it correctly', () => {
+          expect(jdlObject.getOptions()).to.deep.eq([
+            new JDLBinaryOption({
+              name: binaryOptions.Options.CLIENT_INTERFACE,
+              entityNames: ['*'],
+              excludedNames: ['A'],
+              value: BinaryOptionValues.clientInterface.RESTFUL_RESOURCES,
+            }),
+          ]);
+        });
+      });
       context('when having following comments', () => {
         let jdlObject;
 

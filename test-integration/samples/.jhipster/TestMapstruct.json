@@ -1,5 +1,6 @@
 {
   "changelogDate": "20160208210112",
+  "clientInterface": "restful-resources",
   "dto": "mapstruct",
   "fields": [],
   "fluentMethods": true,
