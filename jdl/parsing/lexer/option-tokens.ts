@@ -31,6 +31,7 @@ const tokens = [
   { name: 'EMBEDDED', pattern: 'embedded', type: 'unary' },
   { name: 'DTO', pattern: 'dto', type: 'binary' },
   { name: 'PAGINATE', pattern: 'paginate', type: 'binary' },
+  { name: 'PERSISTED', pattern: 'persisted', type: 'binary' },
   { name: 'SERVICE', pattern: 'service', type: 'binary' },
   { name: 'MICROSERVICE', pattern: 'microservice', type: 'binary' },
   { name: 'SEARCH', pattern: 'search', type: 'binary' },
