@@ -281,17 +281,22 @@ export const serverFiles = {
 export function writeFiles() {
   return {
     cleanupOldServerFiles({ application, entities }) {
-      for (const entity of entities.filter(entity => !entity.skipServer && entity.clientInterface !== NO_CLIENT_INTERFACE)) {
+      for (const entity of entities.filter(entity => !entity.skipServer)) {
         cleanupOldFiles.call(this, { application, entity });
       }
     },
 
     async writeServerFiles({ application, entities }) {
       for (const entity of entities.filter(
-        entity => !entity.skipServer && !entity.builtIn && entity.clientInterface !== NO_CLIENT_INTERFACE
+        entity => !entity.skipServer && !entity.builtIn
       )) {
+        var filteredServerFiles = {...serverFiles};
+        if (entity.clientInterface === NO_CLIENT_INTERFACE) {
+          delete filteredServerFiles["restFiles"];
+          delete filteredServerFiles["restTestFiles"];
+        }
         await this.writeFiles({
-          sections: serverFiles,
+          sections: filteredServerFiles,
           rootTemplatesPath: application.reactive ? ['entity/reactive', 'entity'] : 'entity',
           context: { ...application, ...entity },
         });
@@ -327,7 +332,7 @@ export function writeFiles() {
 export function customizeFiles({ application, entities }) {
   if (application.databaseType === SQL) {
     for (const entity of entities.filter(
-      entity => !entity.skipServer && !entity.builtIn && entity.clientInterface !== NO_CLIENT_INTERFACE
+      entity => !entity.skipServer && !entity.builtIn
     )) {
       if ([EHCACHE, CAFFEINE, INFINISPAN, REDIS].includes(application.cacheProvider) && application.enableHibernateCache) {
         this.addEntityToCache(
