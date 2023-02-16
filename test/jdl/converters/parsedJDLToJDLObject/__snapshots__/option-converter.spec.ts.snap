@@ -117,6 +117,21 @@ exports[`jdl - OptionConverter convertOptions when passing options such as pagin
 ]
 `;
 
+exports[`jdl - OptionConverter convertOptions when passing options such as persisted should convert it 1`] = `
+[
+  JDLBinaryOption {
+    "entityNames": Set {
+      "A",
+    },
+    "excludedNames": Set {
+      "B",
+    },
+    "name": "persisted",
+    "value": "no",
+  },
+]
+`;
+
 exports[`jdl - OptionConverter convertOptions when passing options such as readOnly should convert it 1`] = `
 [
   JDLUnaryOption {

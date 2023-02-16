@@ -17,6 +17,7 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
   "microserviceName": "mymicroservice",
   "name": "Country",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [
     {
@@ -73,6 +74,7 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
   "microserviceName": "mymicroservice",
   "name": "Department",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [
     {
@@ -146,6 +148,7 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
   "microserviceName": "mymicroservice",
   "name": "Employee",
   "pagination": "infinite-scroll",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [
     {
@@ -222,6 +225,7 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
   "microserviceName": "mymicroservice",
   "name": "Job",
   "pagination": "pagination",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [
     {
@@ -282,6 +286,7 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
   "microserviceName": "mymicroservice",
   "name": "JobHistory",
   "pagination": "infinite-scroll",
+  "persisted": "yes",
   "readOnly": true,
   "relationships": [
     {
@@ -340,6 +345,7 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
   "microserviceName": "mymicroservice",
   "name": "Location",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [
     {
@@ -380,6 +386,7 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
   "microserviceName": "mymicroservice",
   "name": "Region",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [
     {
@@ -414,6 +421,7 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
   "microserviceName": "mymicroservice",
   "name": "Task",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [
     {
@@ -452,6 +460,7 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       "microserviceName": "mymicroservice",
       "name": "Country",
       "pagination": "no",
+      "persisted": "yes",
       "readOnly": false,
       "relationships": [
         {
@@ -506,6 +515,7 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       "microserviceName": "mymicroservice",
       "name": "Department",
       "pagination": "no",
+      "persisted": "yes",
       "readOnly": false,
       "relationships": [
         {
@@ -576,6 +586,7 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       "microserviceName": "mymicroservice",
       "name": "Employee",
       "pagination": "infinite-scroll",
+      "persisted": "yes",
       "readOnly": false,
       "relationships": [
         {
@@ -650,6 +661,7 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       "microserviceName": "mymicroservice",
       "name": "Job",
       "pagination": "pagination",
+      "persisted": "yes",
       "readOnly": false,
       "relationships": [
         {
@@ -707,6 +719,7 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       "microserviceName": "mymicroservice",
       "name": "JobHistory",
       "pagination": "infinite-scroll",
+      "persisted": "yes",
       "readOnly": true,
       "relationships": [
         {
@@ -763,6 +776,7 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       "microserviceName": "mymicroservice",
       "name": "Location",
       "pagination": "no",
+      "persisted": "yes",
       "readOnly": false,
       "relationships": [
         {
@@ -801,6 +815,7 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       "microserviceName": "mymicroservice",
       "name": "Region",
       "pagination": "no",
+      "persisted": "yes",
       "readOnly": false,
       "relationships": [
         {
@@ -833,6 +848,7 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       "microserviceName": "mymicroservice",
       "name": "Task",
       "pagination": "no",
+      "persisted": "yes",
       "readOnly": false,
       "relationships": [
         {
@@ -1594,6 +1610,7 @@ exports[`jdl - JDLImporter import when parsing multiple JDL files with applicati
   "jpaMetamodelFiltering": false,
   "name": "A",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -1613,6 +1630,7 @@ exports[`jdl - JDLImporter import when parsing multiple JDL files with applicati
   "jpaMetamodelFiltering": false,
   "name": "B",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -1634,6 +1652,7 @@ exports[`jdl - JDLImporter import when parsing multiple JDL files with applicati
   "microserviceName": "mySecondApp",
   "name": "E",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -1654,6 +1673,7 @@ exports[`jdl - JDLImporter import when parsing multiple JDL files with applicati
   "jpaMetamodelFiltering": false,
   "name": "F",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -1675,6 +1695,7 @@ exports[`jdl - JDLImporter import when parsing multiple JDL files with applicati
   "microserviceName": "mySecondApp",
   "name": "E",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -1695,6 +1716,7 @@ exports[`jdl - JDLImporter import when parsing multiple JDL files with applicati
   "jpaMetamodelFiltering": false,
   "name": "F",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -1716,6 +1738,7 @@ exports[`jdl - JDLImporter import when passing the unidirectionalRelationships o
     "jpaMetamodelFiltering": false,
     "name": "A",
     "pagination": "no",
+    "persisted": "yes",
     "readOnly": false,
     "relationships": [
       {
@@ -1790,6 +1813,7 @@ exports[`jdl - JDLImporter import when passing the unidirectionalRelationships o
     "jpaMetamodelFiltering": false,
     "name": "B",
     "pagination": "no",
+    "persisted": "yes",
     "readOnly": false,
     "relationships": [
       {

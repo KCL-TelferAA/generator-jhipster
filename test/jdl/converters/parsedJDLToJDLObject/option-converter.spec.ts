@@ -58,6 +58,7 @@ describe('jdl - OptionConverter', () => {
         [binaryOptions.Options.DTO, binaryOptions.Values.dto.MAPSTRUCT],
         [binaryOptions.Options.SERVICE, binaryOptions.Values.service.SERVICE_CLASS],
         [binaryOptions.Options.PAGINATION, binaryOptions.Values.pagination.PAGINATION],
+        [binaryOptions.Options.PERSISTED, binaryOptions.Values.persisted.DO_NOT_PERSIST],
         [binaryOptions.Options.SEARCH, binaryOptions.Values.search.ELASTICSEARCH],
         [binaryOptions.Options.ANGULAR_SUFFIX, 'toto'],
         [binaryOptions.Options.CLIENT_ROOT_FOLDER, 'toto'],

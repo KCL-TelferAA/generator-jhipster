@@ -61,6 +61,7 @@ JSONEntity {
   "jpaMetamodelFiltering": false,
   "name": "Toto",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -113,6 +114,7 @@ JSONEntity {
   "microserviceName": "nope",
   "name": "Titi",
   "pagination": "pagination",
+  "persisted": "no",
   "readOnly": true,
   "relationships": [
     42,
@@ -284,6 +286,7 @@ JSONEntity {
   "jpaMetamodelFiltering": false,
   "name": "Toto",
   "pagination": "pagination",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
