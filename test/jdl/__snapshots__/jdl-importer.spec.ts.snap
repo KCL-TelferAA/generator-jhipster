@@ -3,6 +3,7 @@
 exports[`jdl - JDLImporter import when not parsing applications should export entity Country 1`] = `
 {
   "applications": "*",
+  "changelogDate": "20160926101210",
   "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
@@ -42,6 +43,7 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
 exports[`jdl - JDLImporter import when not parsing applications should export entity Department 1`] = `
 {
   "applications": "*",
+  "changelogDate": "20160926092246",
   "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": true,
@@ -107,7 +109,9 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
 
 exports[`jdl - JDLImporter import when not parsing applications should export entity Employee 1`] = `
 {
+  "angularJSSuffix": "myentities",
   "applications": "*",
+  "changelogDate": "20160926083805",
   "clientInterface": "restful-resources",
   "dto": "mapstruct",
   "embedded": false,
@@ -192,6 +196,7 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
 exports[`jdl - JDLImporter import when not parsing applications should export entity Job 1`] = `
 {
   "applications": "*",
+  "changelogDate": "20160924093047",
   "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
@@ -258,6 +263,7 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
 exports[`jdl - JDLImporter import when not parsing applications should export entity JobHistory 1`] = `
 {
   "applications": "*",
+  "changelogDate": "20160924092444",
   "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
@@ -319,6 +325,7 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
 exports[`jdl - JDLImporter import when not parsing applications should export entity Location 1`] = `
 {
   "applications": "*",
+  "changelogDate": "20160924092439",
   "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
@@ -372,6 +379,7 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
 exports[`jdl - JDLImporter import when not parsing applications should export entity Region 1`] = `
 {
   "applications": "*",
+  "changelogDate": "20160926083800",
   "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
@@ -403,6 +411,7 @@ exports[`jdl - JDLImporter import when not parsing applications should export en
 exports[`jdl - JDLImporter import when not parsing applications should export entity Task 1`] = `
 {
   "applications": "*",
+  "changelogDate": "20160926100704",
   "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
@@ -443,8 +452,9 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
   "exportedApplicationsWithEntities": {},
   "exportedDeployments": [],
   "exportedEntities": [
-    JSONEntity {
+    {
       "applications": "*",
+      "changelogDate": "20160926101210",
       "clientInterface": "restful-resources",
       "dto": "no",
       "embedded": false,
@@ -480,8 +490,9 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       "service": "no",
       "skipServer": true,
     },
-    JSONEntity {
+    {
       "applications": "*",
+      "changelogDate": "20160926092246",
       "clientInterface": "restful-resources",
       "dto": "no",
       "embedded": true,
@@ -544,8 +555,10 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       ],
       "service": "no",
     },
-    JSONEntity {
+    {
+      "angularJSSuffix": "myentities",
       "applications": "*",
+      "changelogDate": "20160926083805",
       "clientInterface": "restful-resources",
       "dto": "mapstruct",
       "embedded": false,
@@ -625,8 +638,9 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       "searchEngine": "elasticsearch",
       "service": "serviceClass",
     },
-    JSONEntity {
+    {
       "applications": "*",
+      "changelogDate": "20160924093047",
       "clientInterface": "restful-resources",
       "dto": "no",
       "embedded": false,
@@ -689,8 +703,9 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       ],
       "service": "no",
     },
-    JSONEntity {
+    {
       "applications": "*",
+      "changelogDate": "20160924092444",
       "clientInterface": "restful-resources",
       "dto": "no",
       "embedded": false,
@@ -747,8 +762,9 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       ],
       "service": "no",
     },
-    JSONEntity {
+    {
       "applications": "*",
+      "changelogDate": "20160924092439",
       "clientInterface": "restful-resources",
       "dto": "no",
       "embedded": false,
@@ -798,8 +814,9 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       ],
       "service": "no",
     },
-    JSONEntity {
+    {
       "applications": "*",
+      "changelogDate": "20160926083800",
       "clientInterface": "restful-resources",
       "dto": "no",
       "embedded": false,
@@ -827,8 +844,9 @@ exports[`jdl - JDLImporter import when not parsing applications should return th
       ],
       "service": "no",
     },
-    JSONEntity {
+    {
       "applications": "*",
+      "changelogDate": "20160926100704",
       "clientInterface": "restful-resources",
       "dto": "no",
       "embedded": false,

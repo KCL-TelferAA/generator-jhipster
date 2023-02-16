@@ -16,19 +16,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import { osLocaleSync } from 'os-locale';
-import { findLanguageForTag, Language, supportedLanguages } from './languages.mjs';
-
-const detectLanguage = (languages: ReadonlyArray<Language> = supportedLanguages) => {
-  const locale = osLocaleSync();
-  if (locale) {
-    const language = findLanguageForTag(locale.toLowerCase(), languages) ?? findLanguageForTag(locale.split('-')[0], languages);
-    if (language) {
-      return language.languageTag;
-    }
-  }
-  return 'en';
-};
-
-export default detectLanguage;
+// eslint-disable-next-line import/prefer-default-export
+export { default as createSortConfigFilesTransform } from './sort-config-files-transform.mjs';
