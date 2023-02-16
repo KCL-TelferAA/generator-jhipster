@@ -26,7 +26,8 @@ import { databaseTypes, entityOptions, cacheTypes } from '../../jdl/jhipster/ind
 import { getEnumInfo } from '../base-application/support/index.mjs';
 
 const { COUCHBASE, MONGODB, NEO4J, SQL } = databaseTypes;
-const { MapperTypes, ServiceTypes } = entityOptions;
+const { MapperTypes, PersistedTypes, ServiceTypes } = entityOptions;
+const { DO_NOT_PERSIST } = PersistedTypes;
 const { EHCACHE, CAFFEINE, INFINISPAN, REDIS } = cacheTypes;
 const { MAPSTRUCT } = MapperTypes;
 const { SERVICE_CLASS, SERVICE_IMPL } = ServiceTypes;
@@ -287,8 +288,16 @@ export function writeFiles() {
 
     async writeServerFiles({ application, entities }) {
       for (const entity of entities.filter(entity => !entity.skipServer && !entity.builtIn)) {
+        console.dir(entity);
+        var filteredServerFiles = {...serverFiles};
+        if (entity.persisted === DO_NOT_PERSIST) {
+          delete filteredServerFiles["entityFiles"];
+          delete filteredServerFiles["respositoryFiles"];
+          delete filteredServerFiles["sqlFiles"];
+          delete filteredServerFiles["gatlingFiles"];
+        }
         await this.writeFiles({
-          sections: serverFiles,
+          sections: filteredServerFiles,
           rootTemplatesPath: application.reactive ? ['entity/reactive', 'entity'] : 'entity',
           context: { ...application, ...entity },
         });
