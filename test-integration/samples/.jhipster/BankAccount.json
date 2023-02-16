@@ -1,6 +1,7 @@
 {
   "angularJSSuffix": "mySuffix",
   "changelogDate": "20200804163352",
+  "clientInterface": "restful-resources",
   "clientRootFolder": "test-root",
   "dto": "no",
   "fields": [

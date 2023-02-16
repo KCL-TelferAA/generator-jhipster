@@ -1,5 +1,6 @@
 {
   "changelogDate": "20160208184036",
+  "clientInterface": "restful-resources",
   "dto": "no",
   "fields": [
     { "fieldName": "stringHugo", "fieldType": "String" },

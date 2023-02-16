@@ -6,6 +6,7 @@
     "buildTool": "maven",
     "cacheProvider": "no",
     "clientFramework": "angular",
+    "clientInterface": "restful-resources",
     "clientPackageManager": "npm",
     "clientTheme": "none",
     "clientThemeVariant": "",
