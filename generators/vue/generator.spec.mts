@@ -108,6 +108,16 @@ describe(`generator - ${clientFramework}`, () => {
         });
       });
 
+      describe('clientInterface', () => {
+        const { clientSrcDir = CLIENT_MAIN_SRC_DIR } = sampleConfig;
+        it('should not generate client files for entities with "no" client interface', () => {
+          runResult.assertNoFile(`${clientSrcDir}app/entities/no-client-interface/no-client-interface.vue`);
+        });
+        it('should generate client files for entities with "restful-resources" client interface', () => {
+          runResult.assertFile(`${clientSrcDir}app/entities/simple/simple.vue`);
+        });
+      });
+
       describe('withAdminUi', () => {
         const { applicationType, withAdminUi, clientSrcDir = CLIENT_MAIN_SRC_DIR, clientTestDir = CLIENT_TEST_SRC_DIR } = sampleConfig;
         const generateAdminUi = applicationType !== 'microservice' && withAdminUi;

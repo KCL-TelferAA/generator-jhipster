@@ -1,5 +1,6 @@
 {
   "changelogDate": "20160806123743",
+  "clientInterface": "restful-resources",
   "dto": "mapstruct",
   "entityTableName": "entity_with_pagination_and_dto",
   "fields": [{ "fieldName": "lea", "fieldType": "String" }],

@@ -1,6 +1,7 @@
 {
   "applications": "*",
   "changelogDate": "20200417190923",
+  "clientInterface": "restful-resources",
   "clientRootFolder": "",
   "dto": "no",
   "embedded": false,
