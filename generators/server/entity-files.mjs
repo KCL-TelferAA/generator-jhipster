@@ -288,7 +288,6 @@ export function writeFiles() {
 
     async writeServerFiles({ application, entities }) {
       for (const entity of entities.filter(entity => !entity.skipServer && !entity.builtIn)) {
-        console.dir(entity);
         var filteredServerFiles = {...serverFiles};
         if (entity.persisted === DO_NOT_PERSIST) {
           delete filteredServerFiles["entityFiles"];
