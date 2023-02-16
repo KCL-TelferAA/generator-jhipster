@@ -49,19 +49,7 @@ describe(`generator - ${generator}`, () => {
     describe('default config', () => {
       let runResult;
       before(async () => {
-        runResult = await helpers
-          .run(generatorFile)
-          .withMockedGenerators(mockedGenerators)
-          .withOptions({
-            defaults: true,
-            creationTimestamp: '2000-01-01',
-            applicationWithEntities: {
-              config: {
-                baseName: 'jhipster',
-              },
-              entities: [],
-            },
-          });
+        runResult = await helpers.run(generatorFile).withJHipsterConfig().withMockedGenerators(mockedGenerators);
       });
 
       it('should succeed', () => {
@@ -74,18 +62,10 @@ describe(`generator - ${generator}`, () => {
       before(async () => {
         runResult = await basicHelpers
           .run(generatorFile)
-          .withMockedGenerators(mockedGenerators)
-          .withOptions({
+          .withJHipsterConfig({
             prettierTabWidth: 10,
-            skipInstall: true,
-            defaults: true,
-            applicationWithEntities: {
-              config: {
-                baseName: 'jhipster',
-              },
-              entities: [],
-            },
-          });
+          })
+          .withMockedGenerators(mockedGenerators);
       });
 
       it('writes custom .prettierrc', () => {

@@ -16,19 +16,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { JHipsterCommandDefinition } from '../base/api.mjs';
+import { GENERATOR_COMMON, GENERATOR_GIT, GENERATOR_SERVER } from '../generator-list.mjs';
 
-import { osLocaleSync } from 'os-locale';
-import { findLanguageForTag, Language, supportedLanguages } from './languages.mjs';
-
-const detectLanguage = (languages: ReadonlyArray<Language> = supportedLanguages) => {
-  const locale = osLocaleSync();
-  if (locale) {
-    const language = findLanguageForTag(locale.toLowerCase(), languages) ?? findLanguageForTag(locale.split('-')[0], languages);
-    if (language) {
-      return language.languageTag;
-    }
-  }
-  return 'en';
+const command: JHipsterCommandDefinition = {
+  options: {},
+  loadGeneratorOptions: true,
+  import: [GENERATOR_SERVER, GENERATOR_COMMON, GENERATOR_GIT],
 };
 
-export default detectLanguage;
+export default command;

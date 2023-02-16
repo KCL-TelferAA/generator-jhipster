@@ -36,8 +36,6 @@ const __dirname = dirname(__filename);
 const generator = basename(__dirname);
 const generatorFile = join(__dirname, 'index.mjs');
 
-const skipPriorities = ['prompting', 'writing', 'postWriting', 'writingEntities', 'postWritingEntities'];
-
 describe(`generator - ${generator}`, () => {
   it('generator-list constant matches folder name', async () => {
     await expect((await import('../generator-list.mjs'))[`GENERATOR_${snakeCase(generator).toUpperCase()}`]).toBe(generator);
@@ -58,10 +56,7 @@ describe(`generator - ${generator}`, () => {
         runResult = await helpers
           .run(generatorFile)
           .withJHipsterConfig(options)
-          .withOptions({
-            skipInstall: true,
-            skipPriorities,
-          })
+          .withSkipWritingPriorities()
           .withMockedGenerators(mockedComposedGenerators);
       });
 
@@ -82,10 +77,7 @@ describe(`generator - ${generator}`, () => {
         runResult = await helpers
           .run(generatorFile)
           .withJHipsterConfig(options)
-          .withOptions({
-            skipInstall: true,
-            skipPriorities,
-          })
+          .withSkipWritingPriorities()
           .withMockedGenerators(mockedComposedGenerators);
       });
 
@@ -106,10 +98,7 @@ describe(`generator - ${generator}`, () => {
         runResult = await helpers
           .run(generatorFile)
           .withJHipsterConfig(options)
-          .withOptions({
-            skipInstall: true,
-            skipPriorities,
-          })
+          .withSkipWritingPriorities()
           .withMockedGenerators(mockedComposedGenerators);
       });
 
@@ -133,10 +122,7 @@ describe(`generator - ${generator}`, () => {
         runResult = await helpers
           .run(generatorFile)
           .withJHipsterConfig(options)
-          .withOptions({
-            skipInstall: true,
-            skipPriorities,
-          })
+          .withSkipWritingPriorities()
           .withMockedGenerators(mockedComposedGenerators);
       });
 

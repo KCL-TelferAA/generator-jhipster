@@ -16,19 +16,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import File from 'vinyl';
+import sortKeys from 'sort-keys';
+import environmentTransform from 'yeoman-environment/transform';
 
-import { osLocaleSync } from 'os-locale';
-import { findLanguageForTag, Language, supportedLanguages } from './languages.mjs';
+const { patternSpy } = environmentTransform;
 
-const detectLanguage = (languages: ReadonlyArray<Language> = supportedLanguages) => {
-  const locale = osLocaleSync();
-  if (locale) {
-    const language = findLanguageForTag(locale.toLowerCase(), languages) ?? findLanguageForTag(locale.split('-')[0], languages);
-    if (language) {
-      return language.languageTag;
-    }
-  }
-  return 'en';
+const sortJsonFileContent = (contents: Exclude<File['contents'], null>) => {
+  return Buffer.from(`${JSON.stringify(sortKeys(JSON.parse(contents.toString('utf8')), { deep: true }), null, 2)}\n`);
 };
 
-export default detectLanguage;
+export default function createSortConfigFilesTransform(pattern = '**/{.yo-rc.json,.jhipster/*.json}') {
+  return patternSpy((file: any) => {
+    if (file.contents) {
+      file.contents = sortJsonFileContent(file.contents);
+    }
+  }, pattern).name('jhipster:sort-json-files');
+}
