@@ -290,8 +290,9 @@ export function writeFiles() {
       for (const entity of entities.filter(entity => !entity.skipServer && !entity.builtIn)) {
         var filteredServerFiles = {...serverFiles};
         if (entity.persisted === DO_NOT_PERSIST) {
-          delete filteredServerFiles["modelFiles"];
-          delete filteredServerFiles["entityFiles"];
+          delete filteredServerFiles["model"];
+          delete filteredServerFiles["modelTestFiles"];
+          delete filteredServerFiles["server"];
           delete filteredServerFiles["respositoryFiles"];
           delete filteredServerFiles["sqlFiles"];
           delete filteredServerFiles["gatlingFiles"];
