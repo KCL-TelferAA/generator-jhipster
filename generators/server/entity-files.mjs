@@ -206,13 +206,19 @@ export const respositoryFiles = {
 export const serviceFiles = {
   serviceFiles: [
     {
-      condition: generator => generator.service === SERVICE_IMPL && !generator.embedded,
+      condition: generator => generator.persisted === DO_NOT_PERSIST && !generator.embedded,
+      path: `${SERVER_MAIN_SRC_DIR}package/`,
+      renameTo: moveToJavaEntityPackageSrcDir,
+      templates: ['service/_EntityClass_Service.java'],
+    },
+    {
+      condition: generator => generator.service === SERVICE_IMPL && generator.persisted !== DO_NOT_PERSIST && !generator.embedded,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['service/_EntityClass_Service.java', 'service/impl/_EntityClass_ServiceImpl.java'],
     },
     {
-      condition: generator => generator.service === SERVICE_CLASS && !generator.embedded,
+      condition: generator => generator.service === SERVICE_CLASS && generator.persisted !== DO_NOT_PERSIST && !generator.embedded,
       path: SERVER_MAIN_SRC_DIR,
       templates: [
         {
