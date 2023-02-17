@@ -35,7 +35,7 @@ const { OptionNames } = applicationOptions;
 const { ONE_TO_ONE, ONE_TO_MANY, MANY_TO_ONE, MANY_TO_MANY } = relationshipTypes;
 const { JPA_DERIVED_IDENTIFIER } = relationshipOptions;
 const { FILTER, NO_FLUENT_METHOD, READ_ONLY, EMBEDDED } = unaryOptions;
-const { ANGULAR_SUFFIX, CLIENT_ROOT_FOLDER, DTO, MICROSERVICE, PAGINATION, SEARCH, SERVICE, CLIENT_INTERFACE } = binaryOptions.Options;
+const { ANGULAR_SUFFIX, CLIENT_INTERFACE, CLIENT_ROOT_FOLDER, DTO, MICROSERVICE, PAGINATION, SEARCH, SERVICE } = binaryOptions.Options;
 
 const { ANY, IMAGE, TEXT } = BlobTypes;
 const { BYTES } = RelationalOnlyDBTypes;
@@ -344,7 +344,7 @@ function addEntityOptionsToJDL(entity: Entity, entityName: string) {
   if (entity.fluentMethods === false) {
     addUnaryOptionToJDL(NO_FLUENT_METHOD, entityName);
   }
-  [DTO, PAGINATION, SERVICE, CLIENT_INTERFACE].forEach(option => {
+  [CLIENT_INTERFACE, DTO, PAGINATION, PERSISTED, SERVICE].forEach(option => {
     if (entity[option] && entity[option] !== 'no') {
       addBinaryOptionToJDL(option, entity[option], entityName);
     }

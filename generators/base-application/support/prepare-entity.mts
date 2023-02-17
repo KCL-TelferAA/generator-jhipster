@@ -116,6 +116,7 @@ function _derivedProperties(entityWithConfig) {
 
 export const entityDefaultConfig = {
   pagination: binaryOptions.DefaultValues[binaryOptions.Options.PAGINATION],
+  persisted: binaryOptions.DefaultValues[binaryOptions.Options.PERSISTED],
   anyPropertyHasValidation: false,
   dto: binaryOptions.DefaultValues[binaryOptions.Options.DTO],
   service: binaryOptions.DefaultValues[binaryOptions.Options.SERVICE],

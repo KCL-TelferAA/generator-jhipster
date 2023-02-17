@@ -40,6 +40,7 @@ class JSONEntity {
    *        - entityTableName, defaults to the snake-cased entity name,
    *        - dto, defaults to 'no',
    *        - pagination, defaults to 'no',
+   *        - persisted, defaults to 'yes',
    *        - readOnly, defaults to false,
    *        - embedded, defaults to false,
    *        - service, defaults to 'no',
@@ -60,6 +61,7 @@ class JSONEntity {
     this.entityTableName = merged.entityTableName;
     this.dto = merged.dto;
     this.pagination = merged.pagination;
+    this.persisted = merged.persisted;
     this.service = merged.service;
     this.jpaMetamodelFiltering = merged.jpaMetamodelFiltering;
     this.fluentMethods = merged.fluentMethods;
@@ -128,6 +130,7 @@ function getDefaults(entityName) {
     entityTableName: getTableNameFromEntityName(entityName),
     [binaryOptions.Options.DTO]: binaryOptions.DefaultValues[binaryOptions.Options.DTO],
     [binaryOptions.Options.PAGINATION]: binaryOptions.DefaultValues[binaryOptions.Options.PAGINATION],
+    [binaryOptions.Options.PERSISTED]: binaryOptions.DefaultValues[binaryOptions.Options.PERSISTED],
     [binaryOptions.Options.SERVICE]: binaryOptions.DefaultValues[binaryOptions.Options.SERVICE],
     [binaryOptions.Options.CLIENT_INTERFACE]: binaryOptions.DefaultValues[binaryOptions.Options.CLIENT_INTERFACE],
     fluentMethods: true,

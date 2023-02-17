@@ -30,7 +30,10 @@ import { fieldTypes } from '../../jdl/jhipster/index.mjs';
 import { GENERATOR_LIQUIBASE_CHANGELOGS, GENERATOR_BOOTSTRAP_APPLICATION } from '../generator-list.mjs';
 import { postPrepareEntity, prepareField as prepareFieldForLiquibaseTemplates } from '../liquibase/support/index.mjs';
 import { liquibaseComment } from './support/index.mjs';
+import { entityOptions } from '../../jdl/jhipster/index.mjs';
 
+const { PersistedTypes } = entityOptions;
+const { DO_NOT_PERSIST } = PersistedTypes;
 const { CommonDBTypes } = fieldTypes;
 const TYPE_LONG = CommonDBTypes.LONG;
 
@@ -197,7 +200,7 @@ export default class DatabaseChangelogLiquibase extends BaseApplication {
     return {
       writeLiquibaseFiles({ application }) {
         const entity = this.entity;
-        if (entity.skipServer) {
+        if (entity.skipServer || entity.persisted == DO_NOT_PERSIST) {
           return {};
         }
         const entityChanges = this.entityChanges;
@@ -260,7 +263,7 @@ export default class DatabaseChangelogLiquibase extends BaseApplication {
     return {
       writeLiquibaseFiles({ application }) {
         const entity = this.entity;
-        if (entity.skipServer) {
+        if (entity.skipServer || entity.persisted == DO_NOT_PERSIST) {
           return {};
         }
         const databaseChangelog = this.databaseChangelog;

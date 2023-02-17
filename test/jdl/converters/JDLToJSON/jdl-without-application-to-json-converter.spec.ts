@@ -172,6 +172,7 @@ JSONEntity {
   "jpaMetamodelFiltering": false,
   "name": "A",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -240,6 +241,11 @@ JSONEntity {
               entityNames: ['A'],
             }),
             new JDLBinaryOption({
+              name: binaryOptions.Options.PERSISTED,
+              value: binaryOptions.Values.persisted.DO_NOT_PERSIST,
+              entityNames: ['A'],
+            }),
+            new JDLBinaryOption({
               name: binaryOptions.Options.SEARCH,
               value: binaryOptions.Values.search.COUCHBASE,
               entityNames: ['A'],
@@ -278,6 +284,7 @@ JSONEntity {
   "microserviceName": "myMs",
   "name": "A",
   "pagination": "pagination",
+  "persisted": "no",
   "readOnly": true,
   "relationships": [],
   "searchEngine": "couchbase",
@@ -341,6 +348,7 @@ JSONEntity {
   "jpaMetamodelFiltering": false,
   "name": "A",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "serviceClass",
@@ -348,6 +356,68 @@ JSONEntity {
 `);
         });
       });
+
+      context('when setting the persisted option without the service option as serviceImpl', () => {
+        let convertedEntity;
+        let loggerSpy;
+
+        before(() => {
+          loggerSpy = sinon.spy(logger, 'info');
+          const jdlObject = new JDLObject();
+          const entityA = new JDLEntity({
+            name: 'A',
+            tableName: 'entity_a',
+            comment: 'The best entity',
+          });
+          jdlObject.addEntity(entityA);
+          jdlObject.addOption(
+            new JDLBinaryOption({
+              name: binaryOptions.Options.PERSISTED,
+              value: binaryOptions.Values.persisted.DO_NOT_PERSIST,
+              entityNames: ['A'],
+            }),
+          );
+          const returnedMap: any = convert({
+            jdlObject,
+            applicationName: 'toto',
+            applicationType: MONOLITH,
+            databaseType: SQL,
+          });
+          convertedEntity = returnedMap.get('toto')[0];
+        });
+
+        after(() => {
+          loggerSpy.restore();
+        });
+
+        it('should log the automatic setting of the option', () => {
+          expect(loggerSpy.getCall(0).args[0]).to.equal(
+            `Since the persisted option is set to 'no' for A, the 'serviceImpl' value for the ` +
+            `'service' option is gonna be set for this entity.`
+          );
+        });
+        it('should set the service option to serviceClass', () => {
+          jestExpect(convertedEntity).toMatchInlineSnapshot(`
+JSONEntity {
+  "applications": "*",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "entity_a",
+  "fields": [],
+  "fluentMethods": true,
+  "javadoc": "The best entity",
+  "jpaMetamodelFiltering": false,
+  "name": "A",
+  "pagination": "no",
+  "persisted": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl",
+}
+`);
+        });
+      });
+
       context('when setting the filtering option without the service option', () => {
         let convertedEntity;
         let loggerSpy;
@@ -400,6 +470,7 @@ JSONEntity {
   "jpaMetamodelFiltering": true,
   "name": "A",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "serviceClass",
@@ -449,6 +520,7 @@ JSONEntity {
   "jpaMetamodelFiltering": false,
   "name": "A",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "searchEngine": "no",
@@ -511,6 +583,7 @@ JSONEntity {
   "jpaMetamodelFiltering": false,
   "name": "A",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -593,6 +666,7 @@ JSONEntity {
   "jpaMetamodelFiltering": false,
   "name": "A",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -646,6 +720,7 @@ JSONEntity {
   "jpaMetamodelFiltering": false,
   "name": "A",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -699,6 +774,7 @@ JSONEntity {
   "jpaMetamodelFiltering": false,
   "name": "A",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -837,6 +913,7 @@ JSONEntity {
   "jpaMetamodelFiltering": false,
   "name": "A",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -896,6 +973,7 @@ JSONEntity {
   "jpaMetamodelFiltering": false,
   "name": "A",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",

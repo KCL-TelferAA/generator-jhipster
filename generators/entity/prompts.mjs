@@ -33,12 +33,13 @@ import { inputIsNumber, inputIsSignedDecimalNumber, inputIsSignedNumber } from '
 const { isReservedPaginationWords, isReservedFieldName, isReservedTableName } = reservedKeywords;
 const { CASSANDRA, SQL } = databaseTypes;
 const { GATEWAY } = applicationTypes;
-const { FilteringTypes, MapperTypes, ServiceTypes, PaginationTypes, ClientInterfaceTypes } = entityOptions;
+const { FilteringTypes, MapperTypes, ServiceTypes, PaginationTypes, PersistedTypes, ClientInterfaceTypes } = entityOptions;
 const { ANGULAR, REACT } = clientFrameworkTypes;
 const { JPA_METAMODEL } = FilteringTypes;
 const NO_FILTERING = FilteringTypes.NO;
 const { INFINITE_SCROLL, PAGINATION } = PaginationTypes;
 const NO_PAGINATION = PaginationTypes.NO;
+const { PERSIST, DO_NOT_PERSIST } = PersistedTypes;
 const { SERVICE_IMPL, SERVICE_CLASS } = ServiceTypes;
 const NO_SERVICE = ServiceTypes.NO;
 const { RESTFUL_RESOURCES } = ClientInterfaceTypes;
@@ -63,6 +64,7 @@ const prompts = {
   askForUpdate,
   askForFields,
   askForFieldsToRemove,
+  askForPersistence,
   askForRelationships,
   askForRelationsToRemove,
   askForDTO,
@@ -454,6 +456,35 @@ function askForPagination() {
   return this.prompt(prompts).then(props => {
     this.entityConfig.pagination = props.pagination;
     this.logger.info(chalk.green('\nEverything is configured, generating the entity...\n'));
+  });
+}
+
+function askForPersistence() {
+  const context = this.context;
+  // don't prompt if data are imported from a file
+  if (context.useConfigurationFile || context.skipServer) {
+    return undefined;
+  }
+  const prompts = [
+    {
+      type: 'list',
+      name: 'persisted',
+      message: 'Do you want your entity to be persisted?',
+      choices: [
+        {
+          value: PERSIST,
+          name: 'Yes, persist the entity',
+        },
+        {
+          value: DO_NOT_PERSIST,
+          name: 'No',
+        },
+      ],
+      default: 0,
+    },
+  ];
+  return this.prompt(prompts).then(props => {
+    this.entityConfig.persisted = props.persisted;
   });
 }
 
@@ -912,6 +943,12 @@ function askForField() {
  */
 function askForRelationship() {
   const context = this.context;
+
+  // Only allow persisted entities to have relationships with other entities
+  if (context.persisted === DO_NOT_PERSIST) {
+    return undefined;
+  }
+
   const name = context.name;
   this.logger.info(chalk.green('\nGenerating relationships to other entities\n'));
   const prompts = [

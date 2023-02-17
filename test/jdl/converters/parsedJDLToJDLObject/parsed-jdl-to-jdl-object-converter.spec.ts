@@ -997,6 +997,7 @@ JDLDeployment {
         let paginationOptions;
         let serviceOptions;
         let skipClientOptions;
+        let persistedOptions;
         let skipServerOptions;
         let readOnlyOptions;
         let embeddedOptions;
@@ -1010,6 +1011,7 @@ JDLDeployment {
           dtoOptions = jdlObject.getOptionsForName(binaryOptions.Options.DTO);
           filterOptions = jdlObject.getOptionsForName(unaryOptions.FILTER);
           paginationOptions = jdlObject.getOptionsForName(binaryOptions.Options.PAGINATION);
+          persistedOptions = jdlObject.getOptionsForName(binaryOptions.Options.PERSISTED);
           serviceOptions = jdlObject.getOptionsForName(binaryOptions.Options.SERVICE);
           skipClientOptions = jdlObject.getOptionsForName(unaryOptions.SKIP_CLIENT);
           skipServerOptions = jdlObject.getOptionsForName(unaryOptions.SKIP_SERVER);
@@ -1033,6 +1035,9 @@ JDLDeployment {
 
           expect(skipClientOptions).to.have.length(1);
           expect(skipClientOptions[0].entityNames).to.deep.equal(new Set(['A', 'C']));
+
+          expect(persistedOptions).to.have.length(1);
+          expect(persistedOptions[0].entityNames).to.deep.equal(new Set(['A', 'C']));
 
           expect(skipServerOptions).to.have.length(1);
           expect(skipServerOptions[0].entityNames).to.deep.equal(new Set(['A']));

@@ -26,7 +26,8 @@ import { databaseTypes, entityOptions, cacheTypes } from '../../jdl/jhipster/ind
 import { getEnumInfo } from '../base-application/support/index.mjs';
 
 const { COUCHBASE, MONGODB, NEO4J, SQL } = databaseTypes;
-const { MapperTypes, ServiceTypes, ClientInterfaceTypes } = entityOptions;
+const { ClientInterfaceTypes, MapperTypes, PersistedTypes, ServiceTypes } = entityOptions;
+const { DO_NOT_PERSIST } = PersistedTypes;
 const { EHCACHE, CAFFEINE, INFINISPAN, REDIS } = cacheTypes;
 const { MAPSTRUCT } = MapperTypes;
 const { SERVICE_CLASS, SERVICE_IMPL } = ServiceTypes;
@@ -206,13 +207,19 @@ export const respositoryFiles = {
 export const serviceFiles = {
   serviceFiles: [
     {
-      condition: generator => generator.service === SERVICE_IMPL && !generator.embedded,
+      condition: generator => generator.persisted === DO_NOT_PERSIST && !generator.embedded,
+      path: `${SERVER_MAIN_SRC_DIR}package/`,
+      renameTo: moveToJavaEntityPackageSrcDir,
+      templates: ['service/_EntityClass_Service.java'],
+    },
+    {
+      condition: generator => generator.service === SERVICE_IMPL && generator.persisted !== DO_NOT_PERSIST && !generator.embedded,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['service/_EntityClass_Service.java', 'service/impl/_EntityClass_ServiceImpl.java'],
     },
     {
-      condition: generator => generator.service === SERVICE_CLASS && !generator.embedded,
+      condition: generator => generator.service === SERVICE_CLASS && generator.persisted !== DO_NOT_PERSIST && !generator.embedded,
       path: SERVER_MAIN_SRC_DIR,
       templates: [
         {
@@ -287,10 +294,16 @@ export function writeFiles() {
     },
 
     async writeServerFiles({ application, entities }) {
-      for (const entity of entities.filter(
-        entity => !entity.skipServer && !entity.builtIn
-      )) {
+      for (const entity of entities.filter(entity => !entity.skipServer && !entity.builtIn)) {
         var filteredServerFiles = {...serverFiles};
+        if (entity.persisted === DO_NOT_PERSIST) {
+          delete filteredServerFiles["model"];
+          delete filteredServerFiles["modelTestFiles"];
+          delete filteredServerFiles["server"];
+          delete filteredServerFiles["respositoryFiles"];
+          delete filteredServerFiles["sqlFiles"];
+          delete filteredServerFiles["gatlingFiles"];
+        }
         if (entity.clientInterface === NO_CLIENT_INTERFACE) {
           delete filteredServerFiles["restFiles"];
           delete filteredServerFiles["restTestFiles"];

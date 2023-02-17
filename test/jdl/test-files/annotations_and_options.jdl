@@ -1,6 +1,7 @@
 @service(serviceClass)
 @dto(mapstruct)
 @skipClient
+@persisted(no)
 entity A
 
 @paginate(pagination)
@@ -11,6 +12,7 @@ entity B
 @skipClient
 @filter
 @paginate(pagination)
+@persisted(no)
 @readOnly
 @embedded
 entity C

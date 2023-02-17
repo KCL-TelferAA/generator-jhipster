@@ -33,6 +33,11 @@ export const PaginationTypes = {
   NO: 'no',
 };
 
+export const PersistedTypes = {
+  PERSIST: 'yes',
+  DO_NOT_PERSIST: 'no',
+};
+
 export const SearchTypes = {
   ELASTICSEARCH: 'elasticsearch',
   COUCHBASE: 'couchbase',
@@ -53,6 +58,7 @@ export default {
   MapperTypes,
   ServiceTypes,
   PaginationTypes,
+  PersistedTypes,
   SearchTypes,
   FilteringTypes,
   ClientInterfaceTypes,

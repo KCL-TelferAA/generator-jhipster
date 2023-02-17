@@ -431,6 +431,7 @@ entity C
         const content = parseFromContent(`@dto(mapstruct)
 @service(serviceClass)
 @readOnly
+@persisted(no)
 @customAnnotation(value1)
 @customAnnotation2(2)
 @customAnnotation3(2.42)
@@ -456,6 +457,11 @@ entity A`);
     {
       "optionName": "readOnly",
       "type": "UNARY",
+    },
+    {
+      "optionName": "persisted",
+      "optionValue": "no",
+      "type": "BINARY",
     },
     {
       "optionName": "customAnnotation",

@@ -18,9 +18,10 @@
  */
 import entityOptions from './entity-options.js';
 
-const { MapperTypes, PaginationTypes, SearchTypes, ServiceTypes, ClientInterfaceTypes } = entityOptions;
+const { ClientInterfaceTypes, MapperTypes, PaginationTypes, SearchTypes, ServiceTypes } = entityOptions;
 const { MAPSTRUCT } = MapperTypes;
 const NO_MAPPER = MapperTypes.NO;
+const { PERSIST, DO_NOT_PERSIST } = PersistedTypes;
 const { SERVICE_CLASS, SERVICE_IMPL } = ServiceTypes;
 const NO_SERVICE = ServiceTypes.NO;
 const { RESTFUL_RESOURCES } = ClientInterfaceTypes;
@@ -31,6 +32,7 @@ const Options = {
   SERVICE: 'service',
   CLIENT_INTERFACE: 'clientInterface',
   PAGINATION: 'pagination',
+  PERSISTED: 'persisted',
   MICROSERVICE: 'microservice',
   SEARCH: 'search',
   ANGULAR_SUFFIX: 'angularSuffix',
@@ -48,6 +50,7 @@ const Values = {
     'INFINITE-SCROLL': PaginationTypes.INFINITE_SCROLL,
     NO: PaginationTypes.NO,
   },
+  [Options.PERSISTED]: { PERSIST, DO_NOT_PERSIST },
   [Options.SEARCH]: { ELASTICSEARCH, COUCHBASE, NO: NO_SEARCH },
 };
 
@@ -55,6 +58,7 @@ const DefaultValues = {
   [Options.DTO]: Values[Options.DTO].NO,
   [Options.SERVICE]: Values[Options.SERVICE].NO,
   [Options.PAGINATION]: Values[Options.PAGINATION].NO,
+  [Options.PERSISTED]: Values[Options.PERSISTED].PERSIST,
   [Options.CLIENT_INTERFACE]: Values[Options.CLIENT_INTERFACE].RESTFUL_RESOURCES,
 };
 
@@ -66,6 +70,8 @@ const OptionValues = {
   mapstruct: 'MAPSTRUCT',
   serviceClass: 'SERVICE_CLASS',
   serviceImpl: 'SERVICE_IMPL',
+  doNotPersist: 'DO_NOT_PERSIST',
+  persist: 'PERSIST',
   'restful-resources': 'RESTFUL_RESOURCES',
   pagination: 'PAGINATION',
   'infinite-scroll': 'INFINITE-SCROLL',

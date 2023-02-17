@@ -428,7 +428,7 @@ relationship OneToOne {
         expect(returned.exportedEntities[0].myCustomBinaryOption).to.equal('customValue');
         expect(returned.exportedEntities[1].pagination).to.equal('pagination');
         expect(returned.exportedEntities[1].dto).to.equal('mapstruct');
-        expect(returned.exportedEntities[1].service).to.equal('serviceClass');
+        expect(returned.exportedEntities[1].service).to.equal('serviceImpl');
         expect(returned.exportedEntities[2].skipClient).to.be.true;
         expect(returned.exportedEntities[2].jpaMetamodelFiltering).to.be.true;
         expect(returned.exportedEntities[2].pagination).to.equal('pagination');
@@ -667,6 +667,7 @@ paginate * with infinite-scroll
   "jpaMetamodelFiltering": false,
   "name": "A",
   "pagination": "pagination",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -686,6 +687,7 @@ paginate * with infinite-scroll
   "jpaMetamodelFiltering": false,
   "name": "B",
   "pagination": "infinite-scroll",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -706,6 +708,7 @@ paginate * with infinite-scroll
   "jpaMetamodelFiltering": false,
   "name": "C",
   "pagination": "pagination",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -726,6 +729,7 @@ paginate * with infinite-scroll
   "jpaMetamodelFiltering": false,
   "name": "C",
   "pagination": "pagination",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
@@ -745,6 +749,7 @@ paginate * with infinite-scroll
   "jpaMetamodelFiltering": false,
   "name": "D",
   "pagination": "infinite-scroll",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "serviceClass",
@@ -764,6 +769,7 @@ paginate * with infinite-scroll
   "jpaMetamodelFiltering": false,
   "name": "E",
   "pagination": "infinite-scroll",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",

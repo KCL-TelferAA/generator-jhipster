@@ -112,6 +112,7 @@ JSONEntity {
   "jpaMetamodelFiltering": false,
   "name": "A",
   "pagination": "no",
+  "persisted": "yes",
   "readOnly": false,
   "relationships": [],
   "service": "no",
