@@ -17,10 +17,15 @@
  * limitations under the License.
  */
 import { SERVER_MAIN_RES_DIR } from '../generator-constants.mjs';
+import { entityOptions } from '../../jdl/jhipster/index.mjs';
+
+const { PersistedTypes } = entityOptions;
+const { DO_NOT_PERSIST } = PersistedTypes;
 
 export const addEntityFiles = {
   dbChangelog: [
     {
+      condition: generator => generator.entity.persisted !== DO_NOT_PERSIST,
       path: SERVER_MAIN_RES_DIR,
       templates: [
         {
@@ -30,7 +35,7 @@ export const addEntityFiles = {
       ],
     },
     {
-      condition: generator => generator.entity.anyRelationshipIsOwnerSide,
+      condition: generator => generator.entity.anyRelationshipIsOwnerSide && generator.entity.persisted !== DO_NOT_PERSIST,
       path: SERVER_MAIN_RES_DIR,
       templates: [
         {
@@ -46,6 +51,7 @@ export const addEntityFiles = {
 export const updateEntityFiles = {
   dbChangelog: [
     {
+      condition: generator => generator.entity.persisted !== DO_NOT_PERSIST,
       path: SERVER_MAIN_RES_DIR,
       templates: [
         {
@@ -61,6 +67,7 @@ export const updateEntityFiles = {
 export const updateConstraintsFiles = {
   dbChangelog: [
     {
+      condition: generator => generator.entity.persisted !== DO_NOT_PERSIST,
       path: SERVER_MAIN_RES_DIR,
       templates: [
         {
@@ -76,6 +83,7 @@ export const updateConstraintsFiles = {
 export const updateMigrateFiles = {
   dbChangelog: [
     {
+      condition: generator => generator.entity.persisted !== DO_NOT_PERSIST,
       path: SERVER_MAIN_RES_DIR,
       templates: [
         {
@@ -91,6 +99,7 @@ export const updateMigrateFiles = {
 export const fakeFiles = {
   fakeData: [
     {
+      condition: generator => generator.entity.persisted !== DO_NOT_PERSIST,
       path: SERVER_MAIN_RES_DIR,
       templates: [
         {
@@ -106,7 +115,7 @@ export const fakeFiles = {
       ],
     },
     {
-      condition: generator => generator.entity.anyFieldHasImageContentType || generator.entity.anyFieldIsBlobDerived,
+      condition: generator => (generator.entity.anyFieldHasImageContentType || generator.entity.anyFieldIsBlobDerived) && generator.entity.persisted !== DO_NOT_PERSIST,
       path: SERVER_MAIN_RES_DIR,
       templates: [
         {
@@ -116,7 +125,7 @@ export const fakeFiles = {
       ],
     },
     {
-      condition: generator => generator.entity.anyFieldHasTextContentType,
+      condition: generator => generator.entity.anyFieldHasTextContentType && generator.entity.persisted !== DO_NOT_PERSIST,
       path: SERVER_MAIN_RES_DIR,
       templates: ['config/liquibase/fake-data/blob/hipster.txt'],
     },
