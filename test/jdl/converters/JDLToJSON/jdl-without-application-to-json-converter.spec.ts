@@ -162,6 +162,7 @@ describe('jdl - JDLWithoutApplicationToJSONConverter', () => {
           jestExpect(convertedEntity).toMatchInlineSnapshot(`
 JSONEntity {
   "applications": "*",
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -271,6 +272,7 @@ JSONEntity {
 JSONEntity {
   "angularJSSuffix": "suffix",
   "applications": "*",
+  "clientInterface": "restful-resources",
   "clientRootFolder": "../client_root_folder",
   "dto": "mapstruct",
   "embedded": true,
@@ -336,6 +338,7 @@ JSONEntity {
           jestExpect(convertedEntity).toMatchInlineSnapshot(`
 JSONEntity {
   "applications": "*",
+  "clientInterface": "restful-resources",
   "dto": "mapstruct",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -457,6 +460,7 @@ JSONEntity {
           jestExpect(convertedEntity).toMatchInlineSnapshot(`
 JSONEntity {
   "applications": "*",
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -506,6 +510,7 @@ JSONEntity {
           jestExpect(convertedEntity).toMatchInlineSnapshot(`
 JSONEntity {
   "applications": "*",
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -559,6 +564,7 @@ JSONEntity {
             jestExpect(convertedEntity).toMatchInlineSnapshot(`
 JSONEntity {
   "applications": "*",
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -629,6 +635,7 @@ JSONEntity {
             jestExpect(convertedEntity).toMatchInlineSnapshot(`
 JSONEntity {
   "applications": "*",
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -697,6 +704,7 @@ JSONEntity {
             jestExpect(convertedEntity).toMatchInlineSnapshot(`
 JSONEntity {
   "applications": "*",
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "a",
@@ -750,6 +758,7 @@ JSONEntity {
             jestExpect(convertedEntity).toMatchInlineSnapshot(`
 JSONEntity {
   "applications": "*",
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -858,6 +867,7 @@ JSONEntity {
             jestExpect(convertedEntity).toMatchInlineSnapshot(`
 JSONEntity {
   "applications": "*",
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
@@ -944,6 +954,7 @@ JSONEntity {
             jestExpect(convertedEntity).toMatchInlineSnapshot(`
 JSONEntity {
   "applications": "*",
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",

@@ -16,17 +16,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export default {
-  jhipsterDependenciesVersion: {
-    desc: 'jhipster-dependencies version to use, this option is not persisted',
-    type: String,
-    env: 'JHIPSTER_DEPENDENCIES_VERSION',
-    scope: 'generator',
-  },
-  projectVersion: {
-    desc: 'project version to use, this option is not persisted',
-    type: String,
-    env: 'JHI_PROJECT_VERSION',
-    scope: 'generator',
+import { JHipsterCommandDefinition } from '../base/api.mjs';
+
+const command: JHipsterCommandDefinition = {
+  options: {
+    useVersionPlaceholders: {
+      description: 'replace mutable versions with placeholders',
+      type: Boolean,
+      env: 'VERSION_PLACEHOLDERS',
+      scope: 'generator',
+      hide: true,
+    },
+    skipChecks: {
+      description: 'Check the status of the required tools',
+      type: Boolean,
+      scope: 'generator',
+    },
+    experimental: {
+      description:
+        'Enable experimental features. Please note that these features may be unstable and may undergo breaking changes at any time',
+      type: Boolean,
+      scope: 'generator',
+    },
   },
 };
+
+export default command;

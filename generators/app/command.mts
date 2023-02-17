@@ -16,17 +16,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export default {
-  skipPrettier: {
-    desc: 'Skip prettier',
-    type: Boolean,
-    hide: true,
-  },
-  useVersionPlaceholders: {
-    desc: 'replace mutable versions with placeholders',
-    type: Boolean,
-    env: 'VERSION_PLACEHOLDERS',
-    scope: 'control',
-    hide: true,
-  },
+import { JHipsterCommandDefinition } from '../base/api.mjs';
+import { GENERATOR_COMMON, GENERATOR_GIT, GENERATOR_SERVER } from '../generator-list.mjs';
+
+const command: JHipsterCommandDefinition = {
+  options: {},
+  loadGeneratorOptions: true,
+  import: [GENERATOR_SERVER, GENERATOR_COMMON, GENERATOR_GIT],
 };
+
+export default command;

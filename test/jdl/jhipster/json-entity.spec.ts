@@ -52,6 +52,7 @@ describe('jdl - JSONEntity', () => {
         jestExpect(entity).toMatchInlineSnapshot(`
 JSONEntity {
   "applications": [],
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "toto",
@@ -74,6 +75,7 @@ JSONEntity {
 
       before(() => {
         entity = new JSONEntity({
+          clientInterface: 'restful-resources',
           entityName: 'Titi',
           dto: 'mapstruct',
           entityTableName: 'titi',
@@ -101,6 +103,7 @@ JSONEntity {
 JSONEntity {
   "angularJSSuffix": "yes",
   "applications": [],
+  "clientInterface": "restful-resources",
   "clientRootFolder": "oh",
   "dto": "mapstruct",
   "embedded": true,
@@ -277,6 +280,7 @@ JSONEntity {
         jestExpect(jsonEntity).toMatchInlineSnapshot(`
 JSONEntity {
   "applications": [],
+  "clientInterface": "restful-resources",
   "dto": "mapstruct",
   "embedded": false,
   "entityTableName": "toto",

@@ -16,12 +16,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { SKIP_COMMIT_HOOK, SKIP_COMMIT_HOOK_DESCRIPTION } from './constants.mjs';
+import { JHipsterCommandDefinition } from '../base/api.mjs';
 
-export default {
-  [SKIP_COMMIT_HOOK]: {
-    desc: SKIP_COMMIT_HOOK_DESCRIPTION,
-    type: Boolean,
-    scope: 'storage',
+const command: JHipsterCommandDefinition = {
+  options: {
+    jhipsterDependenciesVersion: {
+      description: 'jhipster-dependencies version to use, this option is not persisted',
+      type: String,
+      env: 'JHIPSTER_DEPENDENCIES_VERSION',
+      scope: 'generator',
+    },
+    projectVersion: {
+      description: 'project version to use, this option is not persisted',
+      type: String,
+      env: 'JHI_PROJECT_VERSION',
+      scope: 'generator',
+    },
+    withGeneratedFlag: {
+      description: 'Add a GeneratedByJHipster annotation to all generated java classes and interfaces',
+      type: Boolean,
+      scope: 'storage',
+    },
   },
 };
+
+export default command;

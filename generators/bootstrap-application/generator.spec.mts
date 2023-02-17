@@ -95,27 +95,18 @@ describe(`generator - ${generator}`, () => {
     describe('default config', () => {
       let runResult;
       before(async () => {
-        runResult = await helpers.run(generatorPath).withOptions({
-          defaults: true,
-          creationTimestamp: '2000-01-01',
-          applicationWithEntities: {
-            config: {
-              baseName: 'jhipster',
-            },
-            entities: [
+        runResult = await helpers.run(generatorPath).withJHipsterConfig({}, [
+          {
+            name: 'EntityA',
+            changelogDate: '20220129025419',
+            fields: [
               {
-                name: 'EntityA',
-                changelogDate: '20220129025419',
-                fields: [
-                  {
-                    fieldName: 'id',
-                    fieldType: UUID,
-                  },
-                ],
+                fieldName: 'id',
+                fieldType: UUID,
               },
             ],
           },
-        });
+        ]);
       });
 
       it('should write files', () => {
@@ -178,6 +169,7 @@ describe(`generator - ${generator}`, () => {
   "builtIn": true,
   "builtInUser": true,
   "clientFramework": "angular",
+  "clientInterface": "restful-resources",
   "clientRootFolder": "",
   "containsBagRelationships": false,
   "cypressBootstrapEntities": true,
@@ -648,6 +640,7 @@ describe(`generator - ${generator}`, () => {
   "changelogDate": "20220129025419",
   "changelogDateForRecent": 2022-01-29T02:54:19.000Z,
   "clientFramework": "angular",
+  "clientInterface": "restful-resources",
   "clientRootFolder": "",
   "containsBagRelationships": false,
   "cypressBootstrapEntities": true,
@@ -884,27 +877,23 @@ describe(`generator - ${generator}`, () => {
     describe('skipUserManagement', () => {
       let runResult;
       before(async () => {
-        runResult = await helpers.run(generatorPath).withOptions({
-          defaults: true,
-          applicationWithEntities: {
-            config: {
-              baseName: 'jhipster',
-              skipUserManagement: true,
-            },
-            entities: [
-              {
-                name: 'EntityA',
-                changelogDate: '20220129025419',
-                fields: [
-                  {
-                    fieldName: 'id',
-                    fieldType: UUID,
-                  },
-                ],
-              },
-            ],
+        runResult = await helpers.run(generatorPath).withJHipsterConfig(
+          {
+            skipUserManagement: true,
           },
-        });
+          [
+            {
+              name: 'EntityA',
+              changelogDate: '20220129025419',
+              fields: [
+                {
+                  fieldName: 'id',
+                  fieldType: UUID,
+                },
+              ],
+            },
+          ]
+        );
       });
 
       it('should write files', () => {
@@ -962,6 +951,7 @@ describe(`generator - ${generator}`, () => {
   "changelogDate": "20220129025419",
   "changelogDateForRecent": 2022-01-29T02:54:19.000Z,
   "clientFramework": "angular",
+  "clientInterface": "restful-resources",
   "clientRootFolder": "",
   "containsBagRelationships": false,
   "cypressBootstrapEntities": true,

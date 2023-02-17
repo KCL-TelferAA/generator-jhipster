@@ -33,6 +33,7 @@ const tokens = [
   { name: 'PAGINATE', pattern: 'paginate', type: 'binary' },
   { name: 'PERSISTED', pattern: 'persisted', type: 'binary' },
   { name: 'SERVICE', pattern: 'service', type: 'binary' },
+  { name: 'CLIENT_INTERFACE', pattern: 'clientInterface', type: 'binary' },
   { name: 'MICROSERVICE', pattern: 'microservice', type: 'binary' },
   { name: 'SEARCH', pattern: 'search', type: 'binary' },
   { name: 'ANGULAR_SUFFIX', pattern: 'angularSuffix', type: 'binary' },

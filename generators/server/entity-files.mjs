@@ -26,11 +26,12 @@ import { databaseTypes, entityOptions, cacheTypes } from '../../jdl/jhipster/ind
 import { getEnumInfo } from '../base-application/support/index.mjs';
 
 const { COUCHBASE, MONGODB, NEO4J, SQL } = databaseTypes;
-const { MapperTypes, PersistedTypes, ServiceTypes } = entityOptions;
+const { ClientInterfaceTypes, MapperTypes, PersistedTypes, ServiceTypes } = entityOptions;
 const { DO_NOT_PERSIST } = PersistedTypes;
 const { EHCACHE, CAFFEINE, INFINISPAN, REDIS } = cacheTypes;
 const { MAPSTRUCT } = MapperTypes;
 const { SERVICE_CLASS, SERVICE_IMPL } = ServiceTypes;
+const { NO: NO_CLIENT_INTERFACE } = ClientInterfaceTypes;
 
 export const modelFiles = {
   model: [
@@ -303,6 +304,10 @@ export function writeFiles() {
           delete filteredServerFiles["sqlFiles"];
           delete filteredServerFiles["gatlingFiles"];
         }
+        if (entity.clientInterface === NO_CLIENT_INTERFACE) {
+          delete filteredServerFiles["restFiles"];
+          delete filteredServerFiles["restTestFiles"];
+        }
         await this.writeFiles({
           sections: filteredServerFiles,
           rootTemplatesPath: application.reactive ? ['entity/reactive', 'entity'] : 'entity',
@@ -339,7 +344,9 @@ export function writeFiles() {
 
 export function customizeFiles({ application, entities }) {
   if (application.databaseType === SQL) {
-    for (const entity of entities.filter(entity => !entity.skipServer && !entity.builtIn)) {
+    for (const entity of entities.filter(
+      entity => !entity.skipServer && !entity.builtIn
+    )) {
       if ([EHCACHE, CAFFEINE, INFINISPAN, REDIS].includes(application.cacheProvider) && application.enableHibernateCache) {
         this.addEntityToCache(
           entity.entityAbsoluteClass,

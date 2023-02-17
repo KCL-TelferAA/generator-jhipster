@@ -1,5 +1,6 @@
 {
   "changelogDate": "20160806123735",
+  "clientInterface": "restful-resources",
   "dto": "mapstruct",
   "entityTableName": "entity_with_dto",
   "fields": [{ "fieldName": "emma", "fieldType": "String" }],

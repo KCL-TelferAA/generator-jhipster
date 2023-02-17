@@ -16,12 +16,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { BASE_NAME, BASE_NAME_DESCRIPTION } from './constants.mjs';
-
-export default {
-  [BASE_NAME]: {
-    desc: BASE_NAME_DESCRIPTION,
-    type: String,
-    scope: 'storage',
-  },
-};
+// eslint-disable-next-line import/prefer-default-export
+export { default as createSortConfigFilesTransform } from './sort-config-files-transform.mjs';

@@ -1,5 +1,6 @@
 {
     "fluentMethods": true,
+    "clientInterface": "restful-resources",
     "relationships": [
         {
             "relationshipType": "one-to-one",

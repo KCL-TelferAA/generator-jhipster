@@ -23,20 +23,7 @@ const generatorFile = join(__dirname, 'index.mts');
 const { REACT: clientFramework } = clientFrameworkTypes;
 const commonConfig = { clientFramework, nativeLanguage: 'en', languages: ['fr', 'en'] };
 
-const samplesBuilder = () =>
-  Object.entries(buildClientSamples()).map(([name, sample]) => [
-    name,
-    {
-      skipInstall: true,
-      applicationWithEntities: {
-        config: {
-          ...commonConfig,
-          ...sample,
-        },
-        entities,
-      },
-    },
-  ]);
+const testSamples = buildClientSamples(commonConfig);
 
 const clientAdminFiles = clientSrcDir => [
   `${clientSrcDir}app/modules/administration/configuration/configuration.tsx`,
@@ -45,8 +32,6 @@ const clientAdminFiles = clientSrcDir => [
   `${clientSrcDir}app/modules/administration/metrics/metrics.tsx`,
   `${clientSrcDir}app/modules/administration/logs/logs.tsx`,
 ];
-
-const testSamples = samplesBuilder();
 
 class MockedLanguagesGenerator extends BaseApplicationGenerator<any> {
   get [BaseApplicationGenerator.PREPARING]() {
@@ -69,19 +54,17 @@ describe(`generator - ${clientFramework}`, () => {
   describe('blueprint support', () => testBlueprintSupport(generator));
 
   it('samples matrix should match snapshot', () => {
-    expect(Object.fromEntries(testSamples)).toMatchSnapshot();
+    expect(testSamples).toMatchSnapshot();
   });
 
-  testSamples.forEach(([name, sample]) => {
-    const sampleConfig = sample.applicationWithEntities.config;
-
+  Object.entries(testSamples).forEach(([name, sampleConfig]) => {
     describe(name, () => {
       let runResult;
 
       before(async () => {
         runResult = await helpers
           .run(generatorFile)
-          .withOptions(sample)
+          .withJHipsterConfig(sampleConfig, entities)
           .withGenerators([[MockedLanguagesGenerator, 'jhipster:languages']])
           .withMockedGenerators(['jhipster:common']);
       });
@@ -110,6 +93,16 @@ describe(`generator - ${clientFramework}`, () => {
           const assertion = (...args) =>
             skipJhipsterDependencies ? runResult.assertNoFileContent(...args) : runResult.assertFileContent(...args);
           assertion('package.json', 'generator-jhipster');
+        });
+      });
+
+      describe('clientInterface', () => {
+        const { clientSrcDir = CLIENT_MAIN_SRC_DIR } = sampleConfig;
+        it('should not generate client files for entities with "no" client interface', () => {
+          runResult.assertNoFile(`${clientSrcDir}app/entities/no-client-interface/index.tsx`);
+        });
+        it('should generate client files for entities with "restful-resources" client interface', () => {
+          runResult.assertFile(`${clientSrcDir}app/entities/simple/index.tsx`);
         });
       });
 
