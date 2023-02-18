@@ -295,18 +295,18 @@ export function writeFiles() {
 
     async writeServerFiles({ application, entities }) {
       for (const entity of entities.filter(entity => !entity.skipServer && !entity.builtIn)) {
-        var filteredServerFiles = {...serverFiles};
+        const filteredServerFiles = { ...serverFiles };
         if (entity.persisted === DO_NOT_PERSIST) {
-          delete filteredServerFiles["model"];
-          delete filteredServerFiles["modelTestFiles"];
-          delete filteredServerFiles["server"];
-          delete filteredServerFiles["respositoryFiles"];
-          delete filteredServerFiles["sqlFiles"];
-          delete filteredServerFiles["gatlingFiles"];
+          delete filteredServerFiles.model;
+          delete filteredServerFiles.modelTestFiles;
+          delete filteredServerFiles.server;
+          delete filteredServerFiles.respositoryFiles;
+          delete filteredServerFiles.sqlFiles;
+          delete filteredServerFiles.gatlingFiles;
         }
         if (entity.clientInterface === NO_CLIENT_INTERFACE) {
-          delete filteredServerFiles["restFiles"];
-          delete filteredServerFiles["restTestFiles"];
+          delete filteredServerFiles.restFiles;
+          delete filteredServerFiles.restTestFiles;
         }
         await this.writeFiles({
           sections: filteredServerFiles,
@@ -344,9 +344,7 @@ export function writeFiles() {
 
 export function customizeFiles({ application, entities }) {
   if (application.databaseType === SQL) {
-    for (const entity of entities.filter(
-      entity => !entity.skipServer && !entity.builtIn
-    )) {
+    for (const entity of entities.filter(entity => !entity.skipServer && !entity.builtIn)) {
       if ([EHCACHE, CAFFEINE, INFINISPAN, REDIS].includes(application.cacheProvider) && application.enableHibernateCache) {
         this.addEntityToCache(
           entity.entityAbsoluteClass,

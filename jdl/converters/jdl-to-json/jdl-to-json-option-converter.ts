@@ -97,11 +97,13 @@ function setOptionsToEachEntityName(jdlOption) {
       setOptionToEntityName({ optionName: 'service', optionValue: serviceClassOptionValue }, entityName);
     }
 
-    if (persistedOptionValue === doNotPersistOptionValue &&
-      (!serviceOptionValue || serviceOptionValue === NO_SERVICE || serviceOptionValue === serviceClassOptionValue)) {
+    if (
+      persistedOptionValue === doNotPersistOptionValue &&
+      (!serviceOptionValue || serviceOptionValue === NO_SERVICE || serviceOptionValue === serviceClassOptionValue)
+    ) {
       logger.info(
         `Since the persisted option is set to '${doNotPersistOptionValue}' for ${entityName}, the '${serviceImplOptionValue}' value for the ` +
-        `'service' option is gonna be set for this entity.`
+          "'service' option is gonna be set for this entity."
       );
       setOptionToEntityName({ optionName: 'service', optionValue: serviceImplOptionValue }, entityName);
     }

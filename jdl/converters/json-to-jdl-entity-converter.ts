@@ -35,7 +35,8 @@ const { OptionNames } = applicationOptions;
 const { ONE_TO_ONE, ONE_TO_MANY, MANY_TO_ONE, MANY_TO_MANY } = relationshipTypes;
 const { JPA_DERIVED_IDENTIFIER } = relationshipOptions;
 const { FILTER, NO_FLUENT_METHOD, READ_ONLY, EMBEDDED } = unaryOptions;
-const { ANGULAR_SUFFIX, CLIENT_INTERFACE, CLIENT_ROOT_FOLDER, DTO, MICROSERVICE, PAGINATION, SEARCH, SERVICE } = binaryOptions.Options;
+const { ANGULAR_SUFFIX, CLIENT_INTERFACE, CLIENT_ROOT_FOLDER, DTO, MICROSERVICE, PAGINATION, PERSISTED, SEARCH, SERVICE } =
+  binaryOptions.Options;
 
 const { ANY, IMAGE, TEXT } = BlobTypes;
 const { BYTES } = RelationalOnlyDBTypes;

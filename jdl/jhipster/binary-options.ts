@@ -18,7 +18,7 @@
  */
 import entityOptions from './entity-options.js';
 
-const { ClientInterfaceTypes, MapperTypes, PaginationTypes, SearchTypes, ServiceTypes } = entityOptions;
+const { ClientInterfaceTypes, MapperTypes, PaginationTypes, PersistedTypes, SearchTypes, ServiceTypes } = entityOptions;
 const { MAPSTRUCT } = MapperTypes;
 const NO_MAPPER = MapperTypes.NO;
 const { PERSIST, DO_NOT_PERSIST } = PersistedTypes;

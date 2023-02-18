@@ -375,7 +375,7 @@ JSONEntity {
               name: binaryOptions.Options.PERSISTED,
               value: binaryOptions.Values.persisted.DO_NOT_PERSIST,
               entityNames: ['A'],
-            }),
+            })
           );
           const returnedMap: any = convert({
             jdlObject,

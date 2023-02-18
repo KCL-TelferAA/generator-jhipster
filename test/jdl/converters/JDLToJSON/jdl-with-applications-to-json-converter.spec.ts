@@ -402,7 +402,7 @@ JSONEntity {
               name: binaryOptions.Options.PERSISTED,
               value: binaryOptions.Values.persisted.DO_NOT_PERSIST,
               entityNames: ['A'],
-            }),
+            })
           );
           const returnedMap: any = convert({
             jdlObject,
@@ -419,8 +419,8 @@ JSONEntity {
 
         it('should log the automatic setting of the option', () => {
           expect(loggerSpy.getCall(0).args[0]).to.equal(
-            `Since the persisted option is set to 'no' for A, the 'serviceImpl' value for the ` +
-            `'service' option is gonna be set for this entity.`
+            "Since the persisted option is set to 'no' for A, the 'serviceImpl' value for the " +
+              "'service' option is gonna be set for this entity."
           );
         });
         it('should set the service option to serviceClass', () => {

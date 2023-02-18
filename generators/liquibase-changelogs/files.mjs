@@ -115,7 +115,9 @@ export const fakeFiles = {
       ],
     },
     {
-      condition: generator => (generator.entity.anyFieldHasImageContentType || generator.entity.anyFieldIsBlobDerived) && generator.entity.persisted !== DO_NOT_PERSIST,
+      condition: generator =>
+        (generator.entity.anyFieldHasImageContentType || generator.entity.anyFieldIsBlobDerived) &&
+        generator.entity.persisted !== DO_NOT_PERSIST,
       path: SERVER_MAIN_RES_DIR,
       templates: [
         {
