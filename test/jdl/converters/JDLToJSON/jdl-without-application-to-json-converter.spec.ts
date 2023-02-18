@@ -392,14 +392,15 @@ JSONEntity {
 
         it('should log the automatic setting of the option', () => {
           expect(loggerSpy.getCall(0).args[0]).to.equal(
-            `Since the persisted option is set to 'no' for A, the 'serviceImpl' value for the ` +
-            `'service' option is gonna be set for this entity.`
+            "Since the persisted option is set to 'no' for A, the 'serviceImpl' value for the " +
+              "'service' option is gonna be set for this entity."
           );
         });
         it('should set the service option to serviceClass', () => {
           jestExpect(convertedEntity).toMatchInlineSnapshot(`
 JSONEntity {
   "applications": "*",
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",

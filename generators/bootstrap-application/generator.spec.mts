@@ -548,6 +548,7 @@ expectedEntity(entity), `
   "paginationPagination": false,
   "persistClass": "User",
   "persistInstance": "user",
+  "persisted": "yes",
   "primaryKey": {
     "autoGenerate": true,
     "composite": false,
@@ -801,6 +802,7 @@ expectedEntity(entity), `
   "paginationPagination": false,
   "persistClass": "EntityA",
   "persistInstance": "entityA",
+  "persisted": "yes",
   "primaryKey": {
     "autoGenerate": true,
     "composite": false,
@@ -1110,6 +1112,7 @@ expectedEntity(entity), `
   "paginationPagination": false,
   "persistClass": "EntityA",
   "persistInstance": "entityA",
+  "persisted": "yes",
   "primaryKey": {
     "autoGenerate": true,
     "composite": false,

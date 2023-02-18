@@ -429,6 +429,7 @@ JSONEntity {
   "applications": [
     "toto",
   ],
+  "clientInterface": "restful-resources",
   "dto": "no",
   "embedded": false,
   "entityTableName": "entity_a",
