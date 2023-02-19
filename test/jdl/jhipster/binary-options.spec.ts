@@ -31,6 +31,7 @@ describe('jdl - BinaryOptions', () => {
     "RESTFUL_RESOURCES": "restful-resources",
   },
   "dto": {
+    "DTO_ONLY": "dtoOnly",
     "MAPSTRUCT": "mapstruct",
     "NO": "no",
   },
@@ -52,6 +53,7 @@ describe('jdl - BinaryOptions', () => {
     "NO": "no",
     "SERVICE_CLASS": "serviceClass",
     "SERVICE_IMPL": "serviceImpl",
+    "SERVICE_INTERFACE": "serviceInterface",
   },
 }
 `);

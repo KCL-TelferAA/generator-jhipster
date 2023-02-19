@@ -30,6 +30,7 @@ describe('generator - entity --single-entity', () => {
             fse.copySync(getTemplatePath('default'), dir);
             fse.copySync(getEntityTemplatePath('Simple'), path.join(dir, '.jhipster/Foo.json'));
             fse.copySync(getEntityTemplatePath('Simple2'), path.join(dir, '.jhipster/Bar.json'));
+            fse.copySync(getEntityTemplatePath('Simple3'), path.join(dir, '.jhipster/Zen.json'));
           })
           .withArguments(['Foo'])
           .withOptions({ ignoreNeedlesError: true, regenerate: true, force: true, singleEntity: true });
@@ -50,6 +51,12 @@ describe('generator - entity --single-entity', () => {
           `${SERVER_MAIN_RES_DIR}config/liquibase/changelog/20160926101211_added_entity_Bar.xml`,
           `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/domain/Bar.java`,
           `${CLIENT_MAIN_SRC_DIR}app/entities/bar/bar.model.ts`,
+        ]);
+      });
+
+      it('should not create files for the entity Zen', () => {
+        runResult.assertNoFile([
+          `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/service/maapper/Zen.java`,
         ]);
       });
     });

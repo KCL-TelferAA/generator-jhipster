@@ -274,7 +274,7 @@ JSONEntity {
   "applications": "*",
   "clientInterface": "restful-resources",
   "clientRootFolder": "../client_root_folder",
-  "dto": "mapstruct",
+  "dto": "dtoOnly",
   "embedded": true,
   "entityTableName": "entity_a",
   "fields": [],
@@ -288,7 +288,7 @@ JSONEntity {
   "readOnly": true,
   "relationships": [],
   "searchEngine": "couchbase",
-  "service": "serviceImpl",
+  "service": "serviceInterface",
   "skipClient": true,
   "skipServer": true,
 }
@@ -392,8 +392,8 @@ JSONEntity {
 
         it('should log the automatic setting of the option', () => {
           expect(loggerSpy.getCall(0).args[0]).to.equal(
-            "Since the persisted option is set to 'no' for A, the 'serviceImpl' value for the " +
-              "'service' option is gonna be set for this entity."
+            "Since the persisted option is set to 'no' for A, the 'service' option will be set " +
+            "to 'serviceInterface' value for the and 'dto' will be set to 'dtoOnly'."
           );
         });
         it('should set the service option to serviceClass', () => {
@@ -401,7 +401,7 @@ JSONEntity {
 JSONEntity {
   "applications": "*",
   "clientInterface": "restful-resources",
-  "dto": "no",
+  "dto": "dtoOnly",
   "embedded": false,
   "entityTableName": "entity_a",
   "fields": [],
@@ -413,7 +413,7 @@ JSONEntity {
   "persisted": "no",
   "readOnly": false,
   "relationships": [],
-  "service": "serviceImpl",
+  "service": "serviceInterface",
 }
 `);
         });

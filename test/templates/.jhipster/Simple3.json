@@ -15,7 +15,7 @@
     ],
     "changelogDate": "20160926101212",
     "entityTableName": "simple",
-    "dto": "no",
+    "dto": "dtoOnly",
     "pagination": "no",
     "service": "no"
 }
