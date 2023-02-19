@@ -32,8 +32,8 @@ const {
   Options: { ANGULAR_SUFFIX, MICROSERVICE, SEARCH, DTO },
 } = binaryOptions;
 const serviceClassOptionValue = binaryOptions.Values.service.SERVICE_CLASS;
-const serviceImplOptionValue = binaryOptions.Values.service.SERVICE_IMPL;
-const persistOptionValue = binaryOptions.Values.persisted.PERSIST;
+const serviceInterfaceOptionValue = binaryOptions.Values.service.SERVICE_INTERFACE;
+const dtoOnlyOptionValue = binaryOptions.Values.dto.DTO_ONLY;
 const doNotPersistOptionValue = binaryOptions.Values.persisted.DO_NOT_PERSIST;
 
 const USER = 'user';
@@ -97,15 +97,13 @@ function setOptionsToEachEntityName(jdlOption) {
       setOptionToEntityName({ optionName: 'service', optionValue: serviceClassOptionValue }, entityName);
     }
 
-    if (
-      persistedOptionValue === doNotPersistOptionValue &&
-      (!serviceOptionValue || serviceOptionValue === NO_SERVICE || serviceOptionValue === serviceClassOptionValue)
-    ) {
+    if (persistedOptionValue === doNotPersistOptionValue) {
       logger.info(
-        `Since the persisted option is set to '${doNotPersistOptionValue}' for ${entityName}, the '${serviceImplOptionValue}' value for the ` +
-          "'service' option is gonna be set for this entity."
+        `Since the persisted option is set to '${doNotPersistOptionValue}' for ${entityName}, the 'service' ` +
+        `option will be set to '${serviceInterfaceOptionValue}' value for the and 'dto' will be set to '${dtoOnlyOptionValue}'.`
       );
-      setOptionToEntityName({ optionName: 'service', optionValue: serviceImplOptionValue }, entityName);
+      setOptionToEntityName({ optionName: 'service', optionValue: serviceInterfaceOptionValue }, entityName);
+      setOptionToEntityName({ optionName: 'dto', optionValue: dtoOnlyOptionValue }, entityName);
     }
   });
 

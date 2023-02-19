@@ -18,11 +18,13 @@
  */
 export const MapperTypes = {
   MAPSTRUCT: 'mapstruct',
+  DTO_ONLY: 'dtoOnly',
   NO: 'no',
 };
 
 export const ServiceTypes = {
   SERVICE_CLASS: 'serviceClass',
+  SERVICE_INTERFACE: 'serviceInterface',
   SERVICE_IMPL: 'serviceImpl',
   NO: 'no',
 };

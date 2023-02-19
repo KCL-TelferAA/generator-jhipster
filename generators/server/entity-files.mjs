@@ -29,8 +29,8 @@ const { COUCHBASE, MONGODB, NEO4J, SQL } = databaseTypes;
 const { ClientInterfaceTypes, MapperTypes, PersistedTypes, ServiceTypes } = entityOptions;
 const { DO_NOT_PERSIST } = PersistedTypes;
 const { EHCACHE, CAFFEINE, INFINISPAN, REDIS } = cacheTypes;
-const { MAPSTRUCT } = MapperTypes;
-const { SERVICE_CLASS, SERVICE_IMPL } = ServiceTypes;
+const { MAPSTRUCT, DTO_ONLY } = MapperTypes;
+const { SERVICE_CLASS, SERVICE_IMPL, SERVICE_INTERFACE } = ServiceTypes;
 const { NO: NO_CLIENT_INTERFACE } = ClientInterfaceTypes;
 
 export const modelFiles = {
@@ -207,19 +207,19 @@ export const respositoryFiles = {
 export const serviceFiles = {
   serviceFiles: [
     {
-      condition: generator => generator.persisted === DO_NOT_PERSIST && !generator.embedded,
+      condition: generator => generator.service === SERVICE_INTERFACE && !generator.embedded,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['service/_EntityClass_Service.java'],
     },
     {
-      condition: generator => generator.service === SERVICE_IMPL && generator.persisted !== DO_NOT_PERSIST && !generator.embedded,
+      condition: generator => generator.service === SERVICE_IMPL && generator.persisted !== SERVICE_INTERFACE && !generator.embedded,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['service/_EntityClass_Service.java', 'service/impl/_EntityClass_ServiceImpl.java'],
     },
     {
-      condition: generator => generator.service === SERVICE_CLASS && generator.persisted !== DO_NOT_PERSIST && !generator.embedded,
+      condition: generator => generator.service === SERVICE_CLASS && generator.persisted !== SERVICE_INTERFACE && !generator.embedded,
       path: SERVER_MAIN_SRC_DIR,
       templates: [
         {
@@ -235,7 +235,13 @@ export const serviceFiles = {
 export const dtoFiles = {
   dtoFiles: [
     {
-      condition: generator => generator.dto === MAPSTRUCT,
+      condition: generator => generator.dto === DTO_ONLY,
+      path: `${SERVER_MAIN_SRC_DIR}package/`,
+      renameTo: moveToJavaEntityPackageSrcDir,
+      templates: ['service/dto/_DtoClass_.java'],
+    },
+    {
+      condition: generator => generator.dto === MAPSTRUCT || generator.dto === DTO_ONLY,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['service/dto/_DtoClass_.java', 'service/mapper/EntityMapper.java', 'service/mapper/_EntityClass_Mapper.java'],
@@ -243,7 +249,7 @@ export const dtoFiles = {
   ],
   dtoTestFiles: [
     {
-      condition: generator => generator.dto === MAPSTRUCT,
+      condition: generator => generator.dto === MAPSTRUCT || generator.dto === DTO_ONLY,
       path: `${SERVER_TEST_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageTestDir,
       templates: ['service/dto/_DtoClass_Test.java'],
