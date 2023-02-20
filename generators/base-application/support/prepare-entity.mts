@@ -45,9 +45,9 @@ const { OAUTH2 } = authenticationTypes;
 const { CommonDBTypes } = fieldTypes;
 
 const { BOOLEAN, LONG, STRING, UUID } = CommonDBTypes;
-const { NO: NO_DTO, MAPSTRUCT } = MapperTypes;
+const { NO: NO_DTO, MAPSTRUCT, DTO_ONLY } = MapperTypes;
 const { PAGINATION, INFINITE_SCROLL } = PaginationTypes;
-const { SERVICE_IMPL } = ServiceTypes;
+const { SERVICE_IMPL, SERVICE_INTERFACE } = ServiceTypes;
 const NO_SERVICE = ServiceTypes.NO;
 const NO_PAGINATION = PaginationTypes.NO;
 const NO_MAPPER = MapperTypes.NO;
@@ -109,8 +109,10 @@ function _derivedProperties(entityWithConfig) {
     paginationInfiniteScroll: pagination === INFINITE_SCROLL,
     paginationNo: pagination === NO_PAGINATION,
     dtoMapstruct: dto === MAPSTRUCT,
+    dtoOnly: dto === DTO_ONLY,
     serviceImpl: service === SERVICE_IMPL,
-    serviceNo: service === NO_SERVICE,
+    serviceNo: service === NO_SERVICE || service !== SERVICE_INTERFACE,
+    serviceInterfaceOnly: service === SERVICE_INTERFACE
   });
 }
 

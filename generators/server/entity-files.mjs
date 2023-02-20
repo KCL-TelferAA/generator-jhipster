@@ -36,6 +36,7 @@ const { NO: NO_CLIENT_INTERFACE } = ClientInterfaceTypes;
 export const modelFiles = {
   model: [
     {
+      condition: generator => generator.persisted !== DO_NOT_PERSIST,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['domain/_PersistClass_.java.jhi'],
@@ -43,6 +44,7 @@ export const modelFiles = {
   ],
   modelTestFiles: [
     {
+      condition: generator => generator.persisted !== DO_NOT_PERSIST,
       path: `${SERVER_TEST_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageTestDir,
       templates: ['domain/_PersistClass_Test.java'],
@@ -53,25 +55,25 @@ export const modelFiles = {
 const sqlFiles = {
   sqlFiles: [
     {
-      condition: generator => generator.databaseTypeSql && !generator.reactive,
+      condition: generator => generator.databaseTypeSql && !generator.reactive && generator.persisted !== DO_NOT_PERSIST,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['domain/_PersistClass_.java.jhi.jakarta_persistence'],
     },
     {
-      condition: generator => generator.databaseTypeSql && !generator.reactive && generator.requiresPersistableImplementation,
+      condition: generator => generator.databaseTypeSql && !generator.reactive && generator.requiresPersistableImplementation && generator.persisted !== DO_NOT_PERSIST,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['domain/_PersistClass_.java.jhi.jakarta_lifecycle_events'],
     },
     {
-      condition: generator => generator.databaseTypeSql && !generator.reactive && generator.enableHibernateCache,
+      condition: generator => generator.databaseTypeSql && !generator.reactive && generator.enableHibernateCache && generator.persisted !== DO_NOT_PERSIST,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['domain/_PersistClass_.java.jhi.hibernate_cache'],
     },
     {
-      condition: generator => generator.databaseTypeSql && !generator.reactive && !generator.embedded && generator.containsBagRelationships,
+      condition: generator => generator.databaseTypeSql && !generator.reactive && !generator.embedded && generator.containsBagRelationships && generator.persisted !== DO_NOT_PERSIST,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: [
@@ -80,19 +82,19 @@ const sqlFiles = {
       ],
     },
     {
-      condition: generator => generator.databaseTypeSql && generator.reactive,
+      condition: generator => generator.databaseTypeSql && generator.reactive && generator.persisted !== DO_NOT_PERSIST,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['domain/_PersistClass_.java.jhi.spring_data_reactive'],
     },
     {
-      condition: generator => generator.databaseTypeSql && generator.requiresPersistableImplementation,
+      condition: generator => generator.databaseTypeSql && generator.requiresPersistableImplementation && generator.persisted !== DO_NOT_PERSIST,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['domain/_PersistClass_.java.jhi.spring_data_persistable'],
     },
     {
-      condition: generator => generator.databaseTypeSql && generator.reactive && generator.requiresPersistableImplementation,
+      condition: generator => generator.databaseTypeSql && generator.reactive && generator.requiresPersistableImplementation && generator.persisted !== DO_NOT_PERSIST,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['domain/_PersistClass_Callback.java'],
@@ -107,11 +109,13 @@ const sqlFiles = {
 export const entityFiles = {
   server: [
     {
+      condition: generator => generator.persisted !== DO_NOT_PERSIST,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['domain/_PersistClass_.java.jhi.jakarta_validation'],
     },
     {
+      condition: generator => generator.persisted !== DO_NOT_PERSIST,
       condition: generator => generator.databaseTypeNeo4j,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
@@ -123,7 +127,7 @@ export const entityFiles = {
 export const restFiles = {
   restFiles: [
     {
-      condition: generator => !generator.embedded,
+      condition: generator => !generator.embedded && generator.clientInterface !== NO_CLIENT_INTERFACE,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['web/rest/_EntityClass_Resource.java'],
@@ -131,7 +135,7 @@ export const restFiles = {
   ],
   restTestFiles: [
     {
-      condition: generator => !generator.embedded,
+      condition: generator => !generator.embedded && generator.persisted !== DO_NOT_PERSIST && generator.clientInterface !== NO_CLIENT_INTERFACE,
       path: SERVER_TEST_SRC_DIR,
       templates: [
         {
@@ -180,19 +184,19 @@ const filteringReactiveFiles = {
 export const respositoryFiles = {
   respositoryFiles: [
     {
-      condition: generator => !generator.reactive && !generator.embedded && generator.databaseType !== COUCHBASE,
+      condition: generator => !generator.reactive && !generator.embedded && generator.databaseType !== COUCHBASE && generator.persisted !== DO_NOT_PERSIST,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['repository/_EntityClass_Repository.java'],
     },
     {
-      condition: generator => generator.reactive && !generator.embedded && generator.databaseType !== COUCHBASE,
+      condition: generator => generator.reactive && !generator.embedded && generator.databaseType !== COUCHBASE && generator.persisted !== DO_NOT_PERSIST,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['repository/_EntityClass_Repository_reactive.java'],
     },
     {
-      condition: generator => generator.reactive && generator.databaseType === SQL && !generator.embedded,
+      condition: generator => generator.reactive && generator.databaseType === SQL && !generator.embedded && generator.persisted !== DO_NOT_PERSIST,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: [
@@ -210,16 +214,16 @@ export const serviceFiles = {
       condition: generator => generator.service === SERVICE_INTERFACE && !generator.embedded,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
-      templates: ['service/_EntityClass_Service.java'],
+      templates: ['service/_EntityServiceClass_Service.java'],
     },
     {
-      condition: generator => generator.service === SERVICE_IMPL && generator.persisted !== SERVICE_INTERFACE && !generator.embedded,
+      condition: generator => generator.service === SERVICE_IMPL && generator.service !== SERVICE_INTERFACE && !generator.embedded,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['service/_EntityClass_Service.java', 'service/impl/_EntityClass_ServiceImpl.java'],
     },
     {
-      condition: generator => generator.service === SERVICE_CLASS && generator.persisted !== SERVICE_INTERFACE && !generator.embedded,
+      condition: generator => generator.service === SERVICE_CLASS && generator.service !== SERVICE_INTERFACE && !generator.embedded,
       path: SERVER_MAIN_SRC_DIR,
       templates: [
         {
@@ -241,7 +245,7 @@ export const dtoFiles = {
       templates: ['service/dto/_DtoClass_.java'],
     },
     {
-      condition: generator => generator.dto === MAPSTRUCT || generator.dto === DTO_ONLY,
+      condition: generator => generator.dto === MAPSTRUCT && generator.dto !== DTO_ONLY,
       path: `${SERVER_MAIN_SRC_DIR}package/`,
       renameTo: moveToJavaEntityPackageSrcDir,
       templates: ['service/dto/_DtoClass_.java', 'service/mapper/EntityMapper.java', 'service/mapper/_EntityClass_Mapper.java'],
@@ -350,7 +354,7 @@ export function writeFiles() {
 
 export function customizeFiles({ application, entities }) {
   if (application.databaseType === SQL) {
-    for (const entity of entities.filter(entity => !entity.skipServer && !entity.builtIn)) {
+    for (const entity of entities.filter(entity => !entity.skipServer && !entity.builtIn && entity.persisted !== DO_NOT_PERSIST)) {
       if ([EHCACHE, CAFFEINE, INFINISPAN, REDIS].includes(application.cacheProvider) && application.enableHibernateCache) {
         this.addEntityToCache(
           entity.entityAbsoluteClass,

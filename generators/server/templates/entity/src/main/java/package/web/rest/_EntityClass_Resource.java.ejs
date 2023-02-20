@@ -21,10 +21,12 @@ package <%= entityAbsolutePackage %>.web.rest;
 <%_
 const viaService = !serviceNo;
 _%>
-<%_ if (!dtoMapstruct || serviceNo) { _%>
+<%_ if ((!dtoMapstruct && !dtoOnly) || serviceNo) { _%>
 import <%= entityAbsolutePackage %>.domain.<%= persistClass %>;
 <%_ } _%>
+<%_ if (serviceNo) { _%>
 import <%= entityAbsolutePackage %>.repository.<%= entityClass %>Repository;
+<%_ } _%>
 <%_ if (!serviceNo) { _%>
 import <%= entityAbsolutePackage %>.service.<%= entityClass %>Service;
 <%_ } else { _%>
@@ -39,7 +41,7 @@ import <%= entityAbsolutePackage %>.repository.search.<%= entityClass %>SearchRe
 import <%= entityAbsolutePackage %>.repository.UserRepository;
 <%_ } _%>
 import <%= packageName %>.web.rest.errors.BadRequestAlertException;
-<%_ if (dtoMapstruct) { _%>
+<%_ if (dtoMapstruct || dtoOnly) { _%>
 import <%= entityAbsolutePackage %>.service.dto.<%= dtoClass %>;
   <%_ if (serviceNo) { _%>
 import <%= entityAbsolutePackage %>.service.mapper.<%= entityClass %>Mapper;
@@ -154,7 +156,7 @@ public class <%= entityClass %>Resource {
     const instanceName = restInstance;
     const mapper = entityInstance  + 'Mapper';
     const entityToDtoReference = mapper + '::' + 'toDto';
-    _%><%- include('../../common/inject_template', {viaService: viaService, constructorName: entityClass + 'Resource', queryService: jpaMetamodelFiltering, isUsingMapsId: isUsingMapsId, mapsIdAssoc: mapsIdAssoc, isController: true, reactive: reactive}); -%>
+    _%><%- include('../../common/inject_template', {viaService: viaService, serviceInterfaceOnly: serviceInterfaceOnly, constructorName: entityClass + 'Resource', queryService: jpaMetamodelFiltering, isUsingMapsId: isUsingMapsId, mapsIdAssoc: mapsIdAssoc, isController: true, reactive: reactive}); -%>
 <%_ if (!readOnly) { _%>
 
     /**
@@ -230,14 +232,14 @@ public class <%= entityClass %>Resource {
         if (!Objects.equals(<%= primaryKey.name %>, <%= instanceName %>.get<%= primaryKey.nameCapitalized %>())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
-
+  
   <%_ if (reactive) { _%>
-        return <%= entityInstance %>Repository.existsById(<%= primaryKey.name %>).flatMap(exists -> {
+        return <%= entityInstance %><%- viaService ? 'Service' : 'Repository' %>.existsById(<%= primaryKey.name %>).flatMap(exists -> {
             if (!exists) {
                 return Mono.error(new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound"));
             }
   <%_ } else { _%>
-        if (!<%= entityInstance %>Repository.existsById(<%= primaryKey.name %>)) {
+        if (!<%= entityInstance %><%- viaService ? 'Service' : 'Repository' %>.existsById(<%= primaryKey.name %>)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
   <%_ } _%>
@@ -297,12 +299,12 @@ public class <%= entityClass %>Resource {
         }
 
   <%_ if (reactive) { _%>
-        return <%= entityInstance %>Repository.existsById(<%= primaryKey.name %>).flatMap(exists -> {
+        return <%= entityInstance %><%- viaService ? 'Service' : 'Repository' %>.existsById(<%= primaryKey.name %>).flatMap(exists -> {
             if (!exists) {
                 return Mono.error(new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound"));
             }
   <%_ } else { _%>
-        if (!<%= entityInstance %>Repository.existsById(<%= primaryKey.name %>)) {
+        if (!<%= entityInstance %><%- viaService ? 'Service' : 'Repository' %>.existsById(<%= primaryKey.name %>)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
   <%_ } _%>
