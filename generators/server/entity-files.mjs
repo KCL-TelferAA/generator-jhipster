@@ -318,6 +318,9 @@ export function writeFiles() {
           delete filteredServerFiles.restFiles;
           delete filteredServerFiles.restTestFiles;
         }
+        if (entity.relationships.some(otherEntity => !otherEntity.persisted) && filteredServerFiles.restTestFiles) {
+          delete filteredServerFiles.restTestFiles;
+        }
         await this.writeFiles({
           sections: filteredServerFiles,
           rootTemplatesPath: application.reactive ? ['entity/reactive', 'entity'] : 'entity',
