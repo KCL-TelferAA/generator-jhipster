@@ -1,14 +1,14 @@
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
-import { defaultHelpers as helpers } from '../../test/support/helpers.mjs';
+import { defaultHelpers as helpers } from '../../support/helpers.mjs';
 
-import { SERVER_TEST_SRC_DIR, SERVER_MAIN_SRC_DIR } from '../generator-constants.mjs';
+import { SERVER_TEST_SRC_DIR, SERVER_MAIN_SRC_DIR } from '../../../generators/generator-constants.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const generatorFile = join(__dirname, 'index.mjs');
+const generatorFile = join(__dirname, '../../../generators/server/index.mjs');
 
 const skipPriorities = ['writing', 'postWriting'];
 
@@ -84,29 +84,29 @@ const entitiesNotTested = [
 ];
 
 describe(`generator - server - entities`, () => {
-    describe('entity persistence', () => {
-      let runResult;
+  describe('entity persistence', () => {
+    let runResult;
 
-      before(async () => {
-        runResult = await helpers
-          .run(generatorFile)
-          .withJHipsterConfig({
-            applicationType: 'microservice',
-          }, entities)
-          // .withOptions({ skipPriorities })
-          .withMockedGenerators(['jhipster:languages', 'jhipster:common', 'jhipster:liquibase']);
-      });
-
-      after(() => runResult.cleanup());
-
-      it('should generate domain objects', () => {
-        runResult.assertFile([`${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/domain/Simple.java.jhi`]);
-      });
-
-      it('should generate integration tests for all resources', () => {
-        runResult.assertFile([`${SERVER_TEST_SRC_DIR}com/mycompany/myapp/web/rest/SimpleResourceIT.java`]);
-      });
+    before(async () => {
+      runResult = await helpers
+        .run(generatorFile)
+        .withJHipsterConfig({
+          applicationType: 'microservice',
+        }, entities)
+        // .withOptions({ skipPriorities })
+        .withMockedGenerators(['jhipster:languages', 'jhipster:common', 'jhipster:liquibase']);
     });
+
+    after(() => runResult.cleanup());
+
+    it('should generate domain objects', () => {
+      runResult.assertFile([`${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/domain/Simple.java.jhi`]);
+    });
+
+    it('should generate integration tests for all resources', () => {
+      runResult.assertFile([`${SERVER_TEST_SRC_DIR}com/mycompany/myapp/web/rest/SimpleResourceIT.java`]);
+    });
+  });
 
   describe('entity persistence with persisted option', () => {
     let runResult;
