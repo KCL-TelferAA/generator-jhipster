@@ -185,6 +185,7 @@ export default class DatabaseChangelogLiquibase extends BaseApplication {
             })
             .map(relationship => prepareRelationship(entity, relationship, this, true))
             .map(relationship => this._prepareRelationship(entity, relationship));
+          entityChanges.relationshipsToRecreateForeignKeysOnly = databaseChangelog.relationshipsToRecreateForeignKeysOnly;
         }
         postPrepareEntity({ application, entity });
       },
@@ -342,6 +343,7 @@ export default class DatabaseChangelogLiquibase extends BaseApplication {
       hasFieldConstraint,
       hasRelationshipConstraint,
       shouldWriteAnyRelationship,
+      relationshipsToRecreateForeignKeysOnly,
     } = entityChanges;
 
     const context = {
@@ -357,6 +359,7 @@ export default class DatabaseChangelogLiquibase extends BaseApplication {
       relationships: addedRelationships,
       hasRelationshipConstraint,
       shouldWriteAnyRelationship,
+      relationshipsToRecreateForeignKeysOnly,
     };
 
     const promises = [];

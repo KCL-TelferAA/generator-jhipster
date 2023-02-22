@@ -16,7 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { createTranslationReplacer } from './transform-react.mjs';
 import { clientApplicationBlock } from '../client/utils.mjs';
 import { entityOptions } from '../../jdl/jhipster/index.mjs';
 
@@ -63,7 +62,6 @@ export async function writeEntitiesFiles({ application, entities, control }) {
   for (const entity of entities.filter(entity => !entity.skipClient && !entity.builtIn && entity.clientInterface !== NO_CLIENT_INTERFACE)) {
     await this.writeFiles({
       sections: reactFiles,
-      transform: !application.enableTranslation ? [createTranslationReplacer(control.getWebappTranslation)] : undefined,
       context: { ...application, ...entity },
     });
   }

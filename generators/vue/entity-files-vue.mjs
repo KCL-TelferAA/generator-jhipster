@@ -17,7 +17,6 @@
  * limitations under the License.
  */
 import { clientApplicationBlock, replaceEntityFilePath, CLIENT_TEMPLATES_APP_DIR, clientAppTestBlock } from '../client/utils.mjs';
-import { replaceVueTranslations } from './transform-vue.mjs';
 import { entityOptions } from '../../jdl/jhipster/index.mjs';
 
 const { ClientInterfaceTypes } = entityOptions;
@@ -69,7 +68,6 @@ export async function writeEntityFiles({ application, entities }) {
   for (const entity of entities.filter(entity => !entity.skipClient && !entity.builtIn && entity.clientInterface !== NO_CLIENT_INTERFACE)) {
     await this.writeFiles({
       sections: entityFiles,
-      transform: !application.enableTranslation ? [replaceVueTranslations] : undefined,
       context: { ...application, ...entity },
     });
   }
