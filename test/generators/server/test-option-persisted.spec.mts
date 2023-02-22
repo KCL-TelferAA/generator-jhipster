@@ -62,7 +62,7 @@ const entitySampleA = {
   ],
 };
 
-export const entitySampleB = {
+const entitySampleB = {
   name: 'Simple2',
   changelogDate: "20230220074114",
   clientRootFolder: 'test-root',
