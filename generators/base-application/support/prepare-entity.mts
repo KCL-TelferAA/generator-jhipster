@@ -182,7 +182,9 @@ export default function prepareEntity(entityWithConfig, generator, application) 
     restInstance: dto ? entityWithConfig.dtoInstance : entityWithConfig.persistInstance,
   });
 
+  const apiPathAnnotations = entityWithConfig?.annotations?.filter(a => a.option === 'apiPath');
   _.defaults(entityWithConfig, {
+    entityApiPath: _.kebabCase(apiPathAnnotations ? apiPathAnnotations[0].method : entityWithConfig.entityNamePlural),
     entityNamePluralizedAndSpinalCased: _.kebabCase(entityWithConfig.entityNamePlural),
     entityClassPlural: _.upperFirst(entityWithConfig.entityNamePlural),
     entityInstancePlural: _.lowerFirst(entityWithConfig.entityNamePlural),
@@ -210,7 +212,7 @@ export default function prepareEntity(entityWithConfig, generator, application) 
   entityWithConfig.entityAngularNamePlural = pluralize(entityWithConfig.entityAngularName);
   entityWithConfig.entityReactName = entityWithConfig.entityClass + generator.upperFirstCamelCase(entityWithConfig.entityAngularJSSuffix);
 
-  entityWithConfig.entityApiUrl = entityWithConfig.entityNamePluralizedAndSpinalCased;
+  entityWithConfig.entityApiUrl = entityWithConfig.entityApiPath;
   entityWithConfig.entityStateName = _.kebabCase(entityWithConfig.entityAngularName);
   entityWithConfig.entityUrl = entityWithConfig.entityStateName;
 
