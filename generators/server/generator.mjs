@@ -575,6 +575,7 @@ export default class JHipsterServerGenerator extends BaseApplicationGenerator {
             buildTool: application.buildTool,
             enableSwaggerCodegen: application.enableSwaggerCodegen,
             enableGradleEnterprise: application.enableGradleEnterprise,
+            extendWithDomainObject: application.extendWithDomainObject,
           },
         });
       },

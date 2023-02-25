@@ -116,6 +116,7 @@ const optionNames = {
   WITH_ENTITIES: 'withEntities',
   ENABLE_GRADLE_ENTERPRISE: 'enableGradleEnterprise',
   GRADLE_ENTERPRISE_HOST: 'gradleEnterpriseHost',
+  EXTEND_WITH_DOMAIN_OBJECT: 'extendWithDomainObject', // Extend entities with io.kingstoncloud.web.common.domain.DomainObject
 };
 
 const optionValues: any = {
@@ -233,6 +234,7 @@ const optionValues: any = {
   [optionNames.WITH_ADMIN_UI]: true,
   [optionNames.ENABLE_GRADLE_ENTERPRISE]: false,
   [optionNames.GRADLE_ENTERPRISE_HOST]: '',
+  [optionNames.EXTEND_WITH_DOMAIN_OBJECT]: false,
 };
 
 const optionTypes = {
@@ -289,6 +291,7 @@ const optionTypes = {
   [optionNames.WITH_ADMIN_UI]: { type: ApplicationOptionTypes.BOOLEAN },
   [optionNames.ENABLE_GRADLE_ENTERPRISE]: { type: ApplicationOptionTypes.BOOLEAN },
   [optionNames.GRADLE_ENTERPRISE_HOST]: { type: ApplicationOptionTypes.STRING },
+  [optionNames.EXTEND_WITH_DOMAIN_OBJECT]: { type: ApplicationOptionTypes.BOOLEAN },
 };
 
 const QuotedOptionNames = [

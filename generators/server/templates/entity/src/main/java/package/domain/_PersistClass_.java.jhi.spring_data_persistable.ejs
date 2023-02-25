@@ -25,6 +25,9 @@ import org.springframework.data.domain.Persistable;
 <%_ if (!relationshipsContainOtherSideIgnore) { _%>
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 <%_ } _%>
+    <%_ if (extendWithDomainObject) { _%>
+import io.kingstoncloud.web.common.domain.DomainObject;
+    <%_ } _%>
 <&_ } -&>
 
 <&_ if (fragment.annotationSection) { -&>
@@ -35,18 +38,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 , Persistable<<%= primaryKey.type %>>
 <&_ } -&>
 
+<&_ if (fragment.extendsSection) { -&>
+    <%_ if (extendWithDomainObject) { _%>
+extends DomainObject<<%= persistClass %>>
+    <%_ } _%>
+<&_ } -&>
+
 <&_ if (fragment.classAdditionalFieldsSection) { -&>
     @Transient
     private boolean isPersisted;
 <&_ } -&>
 
 <&_ if (fragment.classAdditionalFieldsMethodsSection) { -&>
-<%_ if (primaryKey.name !== 'id') { -%>
+<%_ if (primaryKey.name !== 'id') { _%>
     @Override
     public <%= primaryKey.type %> getId() {
         return this.<%= primaryKey.name %>;
     }
- <%_ } -%>
+ <%_ } _%>
 
     @Transient
     @Override

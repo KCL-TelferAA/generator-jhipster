@@ -69,6 +69,7 @@ const {
   WITH_ADMIN_UI,
   ENABLE_GRADLE_ENTERPRISE,
   GRADLE_ENTERPRISE_HOST,
+  EXTEND_WITH_DOMAIN_OBJECT,
 } = OptionNames;
 
 const applicationConfigCategoryToken = createTokenFromConfig({ name: 'CONFIG_KEY', pattern: Lexer.NA });
@@ -118,6 +119,7 @@ const applicationConfigTokens = [
   { name: 'GRADLE_ENTERPRISE_HOST', pattern: GRADLE_ENTERPRISE_HOST },
   { name: 'MICROFRONTENDS', pattern: MICROFRONTENDS },
   { name: 'MICROFRONTEND', pattern: MICROFRONTEND },
+  { name: 'EXTEND_WITH_DOMAIN_OBJECT', pattern: EXTEND_WITH_DOMAIN_OBJECT },
 ].map(tokenConfig => {
   (tokenConfig as any).categories = [applicationConfigCategoryToken];
   // This is actually needed as the skipClient & skipServer options are both entity & app options...

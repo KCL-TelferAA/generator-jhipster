@@ -85,4 +85,5 @@ export type SpringBootApplication = CommonClientServerApplication &
     prettierJava: boolean;
     skipFakeData: boolean;
     skipCheckLengthOfIdentifier: boolean;
+    extendWithDomainObject: boolean; // Extend entities with io.kingstoncloud.web.common.domain.DomainObject
   };

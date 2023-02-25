@@ -56,6 +56,12 @@
             </snapshots>
         </repository>
 <%_ } _%>
+<%_ if (extendWithDomainObject) { _%>
+        <repository>
+            <id>arcadia-arcadia_repository</id>
+            <url>https://arcadia-278487347918.d.codeartifact.us-east-1.amazonaws.com/maven/arcadia_repository/</url>
+        </repository>
+<%_ } _%>
         <!-- jhipster-needle-maven-repository -->
     </repositories>
 
@@ -156,6 +162,9 @@
 <%_ if (gatlingTests) { _%>
         <gatling.version><%- javaDependencies.gatling %></gatling.version>
 <%_ } _%>
+<%_ if (extendWithDomainObject) { _%> 
+        <arcadia-common.version><%- javaDependencies['arcadia-common'] %></arcadia-common.version>
+<%_ } _%>
         <!-- Plugin versions -->
         <checkstyle.version><%- javaDependencies.checkstyle %></checkstyle.version>
 <%_ if (!skipClient) { _%>
@@ -232,6 +241,13 @@
             </exclusions>
 <%_ } _%>
         </dependency>
+<%_ if (extendWithDomainObject) { _%>
+        <dependency>
+            <groupId>io.kingstoncloud.web</groupId>
+            <artifactId>common</artifactId>
+            <version>${arcadia-common.version}</version>
+        </dependency>
+<%_ } _%>
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>

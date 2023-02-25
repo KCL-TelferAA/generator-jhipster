@@ -134,6 +134,7 @@ const configPropsValidations = {
     msg: 'dtoSuffix property',
   },
   EMBEDDABLE_LAUNCH_SCRIPT: { type: 'BOOLEAN' },
+  EXTEND_WITH_DOMAIN_OBJECT: { type: 'BOOLEAN' },
   ENABLE_HIBERNATE_CACHE: { type: 'BOOLEAN' },
   ENABLE_SWAGGER_CODEGEN: { type: 'BOOLEAN' },
   ENABLE_TRANSLATION: { type: 'BOOLEAN' },

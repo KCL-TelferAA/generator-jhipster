@@ -1409,6 +1409,10 @@ templates: ${JSON.stringify(existingTemplates, null, 2)}`;
       this.jhipsterConfig.enableSwaggerCodegen = options.enableSwaggerCodegen;
     }
 
+    if (options.extendWithDomainObject !== undefined) {
+      this.jhipsterConfig.extendWithDomainObject = options.extendWithDomainObject;
+    }
+
     if (options.clientPackageManager) {
       this.jhipsterConfig.clientPackageManager = options.clientPackageManager;
     }
@@ -1487,6 +1491,8 @@ templates: ${JSON.stringify(existingTemplates, null, 2)}`;
     dest.dasherizedBaseName = config.dasherizedBaseName;
     dest.humanizedBaseName = config.humanizedBaseName;
     dest.projectDescription = config.projectDescription;
+
+    dest.extendWithDomainObject = config.extendWithDomainObject;
 
     dest.testFrameworks = config.testFrameworks || [];
 
@@ -1654,6 +1660,8 @@ templates: ${JSON.stringify(existingTemplates, null, 2)}`;
     dest.embeddableLaunchScript = config.embeddableLaunchScript;
 
     dest.enableGradleEnterprise = config.enableGradleEnterprise;
+
+    dest.extendWithDomainObject = config.extendWithDomainObject;
 
     if (config.gradleEnterpriseHost) {
       if (config.gradleEnterpriseHost.startsWith('https://')) {

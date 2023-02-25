@@ -22,6 +22,7 @@
         <mapstruct.version>1.5.3.Final</mapstruct.version>
         <typesafe.version>1.4.2</typesafe.version>
         <validation-api.version>3.0.2.Final</validation-api.version>
+        <arcadia-common.version>0.0.10</arcadia-common.version>
 
         <!-- Plugin versions -->
         <checkstyle.version>10.7.0</checkstyle.version>

@@ -355,6 +355,9 @@ describe('jdl - DefaultApplicationOptions', () => {
       it('should set the websocket option to no', () => {
         expect(options.websocket).to.be.equal('no');
       });
+      it('should set withAdminUI option to true', () => {
+        expect(options.extendWithDomainObject).to.be.false;
+      });
     });
     context('when there is no package name option but only a package folder', () => {
       let packageNameOption;
@@ -497,6 +500,22 @@ describe('jdl - DefaultApplicationOptions', () => {
 
       it('should set the cache provider option to no', () => {
         expect(cacheProviderOption).to.equal('no');
+      });
+    });
+  });
+  describe('Test extendWithDomainObject option', () => {
+    context('when the database type option is cassandra', () => {
+      let extendWithDomainObject;
+
+      before(() => {
+        const options = getDefaultConfigForNewApplication({
+          extendWithDomainObject: true,
+        });
+        extendWithDomainObject = options.extendWithDomainObject;
+      });
+
+      it('should set the extendWithDomainObject option to false', () => {
+        expect(extendWithDomainObject).to.be.true;
       });
     });
   });

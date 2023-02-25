@@ -175,6 +175,7 @@ export default function prepareEntity(entityWithConfig, generator, application) 
   _.defaults(entityWithConfig, {
     persistClass: `${entityWithConfig.entityClass}${application.entitySuffix ?? ''}`,
     persistInstance: `${entityWithConfig.entityInstance}${application.entitySuffix ?? ''}`,
+    extendWithDomainObject: application.extendWithDomainObject,
   });
 
   _.defaults(entityWithConfig, {
@@ -583,7 +584,7 @@ function preparePostEntityCommonDerivedPropertiesNotTyped(entity: any) {
   if (entity.primaryKey) {
     derivedPrimaryKeyProperties(entity.primaryKey);
     entity.requiresPersistableImplementation =
-      entity.requiresPersistableImplementation || entity.fields.some(field => field.requiresPersistableImplementation);
+      entity.requiresPersistableImplementation || entity.extendWithDomainObject || entity.fields.some(field => field.requiresPersistableImplementation);
   }
 
   const types = entity.relationships
