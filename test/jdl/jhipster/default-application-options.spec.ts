@@ -355,7 +355,7 @@ describe('jdl - DefaultApplicationOptions', () => {
       it('should set the websocket option to no', () => {
         expect(options.websocket).to.be.equal('no');
       });
-      it('should set withAdminUI option to true', () => {
+      it('should set extendWithDomainObject option to true', () => {
         expect(options.extendWithDomainObject).to.be.false;
       });
     });
