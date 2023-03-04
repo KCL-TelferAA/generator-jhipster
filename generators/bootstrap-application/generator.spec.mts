@@ -127,9 +127,6 @@ describe(`generator - ${generator}`, () => {
 ",
     "stateCleared": "modified",
   },
-  ".jhipster/User.json": {
-    "contents": null,
-  },
 }
 `);
       });
@@ -284,6 +281,7 @@ expectedEntity(entity), `
       "fieldValidationRequired": false,
       "fieldValidationUnique": false,
       "fieldWithContentType": false,
+      "filterableField": true,
       "generateFakeData": Any<Function>,
       "id": true,
       "javaFieldType": "Long",
@@ -359,6 +357,7 @@ expectedEntity(entity), `
       "fieldValidationRequired": false,
       "fieldValidationUnique": false,
       "fieldWithContentType": false,
+      "filterableField": true,
       "generateFakeData": Any<Function>,
       "javaFieldType": "String",
       "loadColumnType": "string",
@@ -430,6 +429,7 @@ expectedEntity(entity), `
       "fieldValidationRequired": false,
       "fieldValidationUnique": false,
       "fieldWithContentType": false,
+      "filterableField": true,
       "generateFakeData": Any<Function>,
       "javaFieldType": "String",
       "loadColumnType": "string",
@@ -501,6 +501,7 @@ expectedEntity(entity), `
       "fieldValidationRequired": false,
       "fieldValidationUnique": false,
       "fieldWithContentType": false,
+      "filterableField": true,
       "generateFakeData": Any<Function>,
       "javaFieldType": "String",
       "loadColumnType": "string",
@@ -752,6 +753,7 @@ expectedEntity(entity), `
       "fieldValidationRequired": false,
       "fieldValidationUnique": false,
       "fieldWithContentType": false,
+      "filterableField": true,
       "generateFakeData": Any<Function>,
       "id": true,
       "javaFieldType": "UUID",
@@ -1064,6 +1066,7 @@ expectedEntity(entity), `
       "fieldValidationRequired": false,
       "fieldValidationUnique": false,
       "fieldWithContentType": false,
+      "filterableField": true,
       "generateFakeData": Any<Function>,
       "id": true,
       "javaFieldType": "UUID",
