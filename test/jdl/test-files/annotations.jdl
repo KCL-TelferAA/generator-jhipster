@@ -9,6 +9,7 @@ entity A {
   noAnnotation String
 }
 
+@persisted(no)
 @paginate(pagination)
 @dto(mapstruct)
 @service(serviceClass)

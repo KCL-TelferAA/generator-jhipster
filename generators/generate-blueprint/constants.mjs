@@ -1,5 +1,5 @@
 /**
- * Copyright 2013-2022 the original author or authors from the JHipster project.
+ * Copyright 2013-2023 the original author or authors from the JHipster project.
  *
  * This file is part of the JHipster project, see https://www.jhipster.tech/
  * for more information.
@@ -18,10 +18,10 @@
  */
 import chalk from 'chalk';
 
-import GENERATOR_LIST from '../generator-list.js';
-import { BASE_PRIORITY_NAMES, ENTITY_PRIORITY_NAMES } from '../../lib/constants/priorities.mjs';
+import * as GENERATOR_LIST from '../generator-list.mjs';
+import { PRIORITY_NAMES_LIST } from '../base-application/priorities.mjs';
 
-const prioritiesForSub = subGenerator => (subGenerator.startsWith('entit') ? ENTITY_PRIORITY_NAMES : BASE_PRIORITY_NAMES);
+const prioritiesForSub = subGenerator => PRIORITY_NAMES_LIST;
 
 export const GENERATE_SNAPSHOTS = 'generateSnapshots';
 export const LINK_JHIPSTER_DEPENDENCY = 'linkJhipsterDependency';
@@ -39,60 +39,6 @@ export const PRIORITIES = 'priorities';
 export const ALL_GENERATORS = 'allGenerators';
 export const ALL_PRIORITIES = 'allPriorities';
 export const WRITTEN = 'written';
-
-/**
- * Options exposed to cli
- */
-export const options = () => ({
-  [GENERATE_SNAPSHOTS]: {
-    desc: 'Generate test snapshots',
-    type: Boolean,
-  },
-  [LINK_JHIPSTER_DEPENDENCY]: {
-    desc: 'Link JHipster dependency for testing',
-    type: Boolean,
-    hide: true,
-  },
-  [SUB_GENERATORS]: {
-    desc: 'Sub generators to generate',
-    type: Array,
-    scope: 'storage',
-  },
-  [ADDITIONAL_SUB_GENERATORS]: {
-    desc: 'Comma separated additional sub generators to generate',
-    type: String,
-    scope: 'storage',
-  },
-  [DYNAMIC]: {
-    desc: 'Genate dynamic generators (advanced)',
-    type: Boolean,
-    scope: 'storage',
-  },
-  [JS]: {
-    desc: 'Use js extension',
-    type: Boolean,
-    scope: 'storage',
-  },
-  [LOCAL_BLUEPRINT_OPTION]: {
-    desc: 'Generate a local blueprint',
-    type: Boolean,
-    scope: 'storage',
-  },
-  [CLI_OPTION]: {
-    desc: 'Generate a cli for the blueprint',
-    type: Boolean,
-    scope: 'storage',
-  },
-  [ALL_GENERATORS]: {
-    desc: 'Generate every sub generator',
-    type: Boolean,
-    scope: 'generator',
-  },
-  [ALL_PRIORITIES]: {
-    desc: 'Generate every priority',
-    type: Boolean,
-  },
-});
 
 /**
  * Config that needs to be written to config

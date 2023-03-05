@@ -1,3 +1,22 @@
+#
+# Copyright the original author or authors from the JHipster project.
+#
+# This file is part of the JHipster project, see https://www.jhipster.tech/
+# for more information.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
 version: 2
 updates:
   - package-ecosystem: 'npm'
@@ -5,29 +24,21 @@ updates:
     rebase-strategy: 'auto'
     schedule:
       interval: 'weekly'
+      # Before cache workflow
+      time: '23:00'
     open-pull-requests-limit: 10
     labels:
       - 'theme: jhipster-internals'
       - 'theme: dependencies'
       - 'skip-changelog'
-    ignore:
-      # ESM only version
-      - dependency-name: 'p-queue'
-        versions: ['>=7']
-      - dependency-name: 'os-locale'
-        versions: ['>=6']
-      - dependency-name: 'sort-keys'
-        versions: ['>=5']
-      - dependency-name: 'escape-string-regexp'
-        versions: ['>=5']
-      - dependency-name: 'isbinaryfile'
-        versions: ['>=5']
 
   - package-ecosystem: 'npm'
-    directory: '/generators/client/templates/angular/'
+    directory: '/generators/angular/templates/'
     rebase-strategy: 'auto'
     schedule:
       interval: 'daily'
+      # Angular workflow is quite big. Give at least 2h interval.
+      time: '03:00'
     open-pull-requests-limit: 10
     versioning-strategy: increase
     labels:
@@ -44,6 +55,7 @@ updates:
     rebase-strategy: 'auto'
     schedule:
       interval: 'daily'
+      time: '00:00'
     open-pull-requests-limit: 10
     versioning-strategy: increase
     labels:
@@ -51,10 +63,11 @@ updates:
       - 'skip-changelog'
 
   - package-ecosystem: 'npm'
-    directory: '/generators/client/templates/common/'
+    directory: '/generators/client/templates/'
     rebase-strategy: 'auto'
     schedule:
       interval: 'daily'
+      time: '07:00'
     open-pull-requests-limit: 10
     versioning-strategy: increase
     labels:
@@ -63,10 +76,11 @@ updates:
       - 'skip-changelog'
 
   - package-ecosystem: 'npm'
-    directory: '/generators/client/templates/react/'
+    directory: '/generators/react/templates/'
     rebase-strategy: 'auto'
     schedule:
       interval: 'daily'
+      time: '01:00'
     open-pull-requests-limit: 10
     versioning-strategy: increase
     labels:
@@ -79,10 +93,11 @@ updates:
         versions: ['>=17']
 
   - package-ecosystem: 'npm'
-    directory: '/generators/client/templates/vue/'
+    directory: '/generators/vue/templates/'
     rebase-strategy: 'auto'
     schedule:
       interval: 'daily'
+      time: '02:00'
     open-pull-requests-limit: 10
     versioning-strategy: increase
     labels:
@@ -100,10 +115,34 @@ updates:
       - dependency-name: '@types/node'
         versions: ['>=17']
 
+  - package-ecosystem: 'docker'
+    directory: '/generators/server/templates/'
+    schedule:
+      interval: 'daily'
+      time: '00:20'
+    open-pull-requests-limit: 5
+    labels:
+      - 'theme: dependencies'
+      - 'theme: docker :whale:'
+      - 'skip-changelog'
+
+  - package-ecosystem: 'maven'
+    directory: '/generators/server/templates/'
+    schedule:
+      interval: 'daily'
+      # Maven doesn't have many PRs, but it triggers every client workflow. Let 2h of interval.
+      time: '05:00'
+    open-pull-requests-limit: 5
+    labels:
+      - 'theme: dependencies'
+      - 'theme: java'
+      - 'skip-changelog'
+
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
       interval: 'weekly'
+      time: '00:30'
     open-pull-requests-limit: 10
     labels:
       - 'theme: github_actions'

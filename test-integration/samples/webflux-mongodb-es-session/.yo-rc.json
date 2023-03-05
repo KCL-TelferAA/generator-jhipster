@@ -5,7 +5,8 @@
     "baseName": "sampleWebfluxMongodbEsSession",
     "buildTool": "maven",
     "cacheProvider": "no",
-    "clientFramework": "angularX",
+    "clientFramework": "angular",
+    "clientInterface": "restful-resources",
     "clientPackageManager": "npm",
     "creationTimestamp": 1596513172471,
     "databaseType": "mongodb",
@@ -23,6 +24,6 @@
     "searchEngine": "elasticsearch",
     "serverPort": "8080",
     "testFrameworks": ["gatling", "cypress"],
-    "websocket": false
+    "websocket": "no"
   }
 }

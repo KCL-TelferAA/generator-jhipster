@@ -7,6 +7,7 @@
     "buildTool": "maven",
     "cacheProvider": "ehcache",
     "clientFramework": "react",
+    "clientInterface": "restful-resources",
     "clientPackageManager": "npm",
     "clientTheme": "none",
     "creationTimestamp": 1596513172471,
@@ -42,7 +43,7 @@
       "hi",
       "hr",
       "hu",
-      "in",
+      "id",
       "it",
       "ja",
       "ko",
@@ -67,16 +68,16 @@
       "uz-Latn-uz",
       "vi"
     ],
-    "messageBroker": false,
+    "messageBroker": "no",
     "nativeLanguage": "en",
     "otherModules": [],
     "packageFolder": "tech/jhipster/sample",
     "packageName": "tech.jhipster.sample",
     "prodDatabaseType": "postgresql",
-    "searchEngine": false,
+    "searchEngine": "no",
     "serverPort": "8080",
-    "serviceDiscoveryType": false,
+    "serviceDiscoveryType": "no",
     "testFrameworks": ["gatling", "cypress"],
-    "websocket": false
+    "websocket": "no"
   }
 }
