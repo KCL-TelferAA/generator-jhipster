@@ -1,5 +1,5 @@
 #
-# Copyright 2013-2022 the original author or authors from the JHipster project.
+# Copyright 2013-2023 the original author or authors from the JHipster project.
 #
 # This file is part of the JHipster project, see https://www.jhipster.tech/
 # for more information.
@@ -67,7 +67,7 @@ inputs:
   jhipster-bom-branch:
     description: 'JHipster BOM branch'
     required: false
-    default: release
+    default: auto
   jhipster-bom-directory:
     description: 'JHipster BOM path'
     required: false
@@ -148,7 +148,7 @@ runs:
         echo "JHI_PROJECT_VERSION=$JHI_PROJECT_VERSION" >> $GITHUB_ENV
 
         if [[ "${{inputs.jhipster-bom-branch}}" != "release" && "${{inputs.jhipster-bom-branch}}" != "ignore" ]]; then
-          echo "JHI_BOM_VERSION=0.0.0-CICD" >> $GITHUB_ENV
+          echo "JHIPSTER_DEPENDENCIES_VERSION=0.0.0-CICD" >> $GITHUB_ENV
         fi
 
         # https://github.com/actions/virtual-environments/issues/1499#issuecomment-689467080
@@ -156,11 +156,11 @@ runs:
         # Use java backward compatible locale values https://bugs.openjdk.java.net/browse/JDK-8267069
         echo "java.locale.useOldISOCodes=true" >> $GITHUB_ENV
 
-        echo "::set-output name=application-path::${{inputs.application-path}}"
-        echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
-        echo "::set-output name=java-version::$JHI_JDK"
-        echo "::set-output name=node-version::$JHI_NODE_VERSION"
-        echo "::set-output name=npm-version::$JHI_NPM_VERSION"
+        echo "application-path=${{inputs.application-path}}" >> $GITHUB_OUTPUT
+        echo "date=$(/bin/date -u "+%Y%m%d")" >> $GITHUB_OUTPUT
+        echo "java-version=$JHI_JDK" >> $GITHUB_OUTPUT
+        echo "node-version=$JHI_NODE_VERSION" >> $GITHUB_OUTPUT
+        echo "npm-version=$JHI_NPM_VERSION" >> $GITHUB_OUTPUT
 
         echo "Variables added to environment"
         cat $GITHUB_ENV
