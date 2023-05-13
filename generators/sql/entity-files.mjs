@@ -18,6 +18,10 @@
  */
 import { SERVER_MAIN_SRC_DIR } from '../generator-constants.mjs';
 import { moveToJavaEntityPackageSrcDir } from '../server/support/index.mjs';
+import { entityOptions } from '../../jdl/jhipster/index.mjs';
+
+const { PersistedTypes } = entityOptions;
+const { DO_NOT_PERSIST } = PersistedTypes;
 
 const sqlFiles = {
   sqlFiles: [
